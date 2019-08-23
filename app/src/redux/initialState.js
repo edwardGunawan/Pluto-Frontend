@@ -5,6 +5,7 @@ export default {
             email:'',
             password:'',
         },
-        isAuthenticated: false,
+        teams:[],
+        isAuthenticated: true,
     }
 }
