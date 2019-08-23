@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav'
 
 
 const Header = () => {
     return (
         <Container>
-            <Navbar expand="lg" variant="light" bg="light">
-                <Navbar.Brand href="#">Navbar</Navbar.Brand>
-            </Navbar>
+            <Nav className="justify-content-end" activeKey="/home">
+                <Nav.Item>
+                    <Nav.Link href="/home">Home</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link href="/register">Register</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link href="/assign-dates">Assign Dates to Team member</Nav.Link>
+                </Nav.Item>
+            </Nav>
         </Container>
     )
 }
