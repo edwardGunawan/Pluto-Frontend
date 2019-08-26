@@ -8,25 +8,27 @@ import Register from '../Register';
 import Home from '../Home';
 import AssignDates from '../AssignDates';
 
+import * as authenticationAction from '../../redux/actions/authenticationAction';
 
-const fakeAuth = {
-    isAuthenticated: true,
-    authenticate(cb) {
-      this.isAuthenticated = true;
-      setTimeout(cb, 100); // fake async
-    },
-    signout(cb) {
-      this.isAuthenticated = false;
-      setTimeout(cb, 100);
-    }
-  };
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e) {
+    const {logout} = this.props;
+    e.preventDefault();
+
+    logout();
+
+  }
     
     render() {
         return (
             <div>
-              <Header />
+              <Header onLogout={this.handleLogout}/>
               <Switch>
                 <Route path="/home" component={Home} />
                 <Route path="/register" component={Register} />
@@ -40,9 +42,15 @@ class Main extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log('here in main', state.user);
-    const {accessToken} = state.user;
-    if(!accessToken) ownProps.history.push('/login');
+    const {isAuthenticated} = state.user;
+    if(!isAuthenticated) ownProps.history.push('/login');
     return {}
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(authenticationAction.logoutRequest())
+  }
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));

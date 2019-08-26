@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {connect} from 'react-redux';
-import * as loginActions from '../../redux/actions/loginAction';
+import * as authenticationAction from '../../redux/actions/authenticationAction';
 
 
 
@@ -50,7 +50,6 @@ class Login extends Component {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" value={email} onChange={this.handleChange} placeholder="Enter email" />
             </Form.Group>
-
             <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" name="password" value={password}  onChange={this.handleChange} placeholder="Password" />
@@ -66,19 +65,20 @@ class Login extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    const {role, email,password, name, accessToken} = state.user;
+    const {role, email, isAuthenticated} = state.user;
+    console.log(isAuthenticated);
     const {history} = ownProps;
-    if(accessToken) history.push('/');
+    if(isAuthenticated) history.push('/');
     return {
         role,
-        email,password
+        email,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         validate: (user) => {
-            dispatch(loginActions.login(user));
+            dispatch(authenticationAction.loginRequest(user));
         },
     }
 }

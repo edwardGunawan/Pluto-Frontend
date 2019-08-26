@@ -45,9 +45,10 @@ server.use((req,res,next) => {
 });
 
 
-// handling POST, Put and PATCH 
+// handling POST, Put and PATCH
+
 server.post('/login', (req,res) => {
-    const {email, password, role} = req.body.payload;
+    const {email, password, role} = req.body.cred;
     console.log(req.body);
     if(!isAuthenticated({email,password, role})) {
         res.status(403).send();
@@ -60,10 +61,15 @@ server.post('/login', (req,res) => {
 });
 
 
+server.post('/logout', (req,res) => {
+    return res.status(200).send();
+})
+
+
 server.post('/register/', (req,res,next) => {
     req.body.slug = createSlug(req.body.name);
     next();
-})
+});
 
 
 server.use(router);

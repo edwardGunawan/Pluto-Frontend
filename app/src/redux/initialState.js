@@ -2,9 +2,9 @@ export default {
     currentUser:{
         role: 'Admin',
         email:'',
-        password:'',
         username:'',
-        accessToken: '',
+        isAuthenticated: localStorage.getItem('access_token') ? true : false,
+        isFetching: false,
     },
     teams:[],
 }
