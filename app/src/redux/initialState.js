@@ -1,10 +1,10 @@
 export default {
-    users:{
-        status: 'Admin',
-        usersInfo: {
-            email:'',
-            password:'',
-        },
-        isAuthenticated: false,
-    }
+    currentUser:{
+        role: 'Admin',
+        email:'',
+        username:'',
+        isAuthenticated: localStorage.getItem('access_token') ? true : false,
+        isFetching: false,
+    },
+    teams:[],
 }

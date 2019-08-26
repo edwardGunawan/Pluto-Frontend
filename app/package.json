@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/react": "^4.3.0",
     "bootstrap": "^4.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-big-calendar-like-google": "0.0.3",
     "react-bootstrap": "^1.0.0-beta.11",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-observable": "^1.1.0",
+    "redux-thunk": "^2.3.0",
+    "rxjs": "^6.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "json-server": "^0.15.0"
   }
 }

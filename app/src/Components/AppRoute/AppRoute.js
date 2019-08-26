@@ -10,6 +10,7 @@ export const AppRoute = () => {
             <Route path="/login" component={Login} />
             {/* <PrivateRoute path="/main" component={Main} /> */}
             <Route path="/" component={Main}/>
+            
         </Switch>
     )
 }
