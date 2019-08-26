@@ -7,6 +7,7 @@
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
     "bootstrap": "^4.3.1",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-big-calendar-like-google": "0.0.3",
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "json-server": "^0.15.0"
   }
 }

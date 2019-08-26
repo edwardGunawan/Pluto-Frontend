@@ -1,7 +1,7 @@
 import initialState from '../initialState';
 import {FETCH_SUCCESS, INSERT_TEAM_INFO} from '../actions/registerAction';
 
-export default function registerReducer(state = initialState.users.teams,  action) {
+export default function registerReducer(state = initialState.teams,  action) {
     console.log(action.type);
     switch(action.type) {
         case INSERT_TEAM_INFO:

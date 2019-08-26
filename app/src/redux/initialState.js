@@ -1,11 +1,10 @@
 export default {
-    users:{
-        status: 'Admin',
-        usersInfo: {
-            email:'',
-            password:'',
-        },
-        teams:[],
-        isAuthenticated: true,
-    }
+    currentUser:{
+        role: 'Admin',
+        email:'',
+        password:'',
+        username:'',
+        accessToken: '',
+    },
+    teams:[],
 }

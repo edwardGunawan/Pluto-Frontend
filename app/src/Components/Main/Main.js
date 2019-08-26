@@ -39,11 +39,10 @@ class Main extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const {isAuthenticated} = state.login;
-    if(!isAuthenticated) ownProps.history.push('/login');
-    return {
-        isAuthenticated,
-    }
+    console.log('here in main', state.user);
+    const {accessToken} = state.user;
+    if(!accessToken) ownProps.history.push('/login');
+    return {}
 }
 
 export default withRouter(connect(mapStateToProps)(Main));

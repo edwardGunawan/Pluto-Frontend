@@ -1,11 +1,17 @@
 import initialState from '../initialState';
-export default function loginReducer(state=initialState.users,action) {
+import {LOGIN_FAILED, LOGIN_SUCCESS} from '../actions/loginAction';
+export default function loginReducer(state=initialState.currentUser,action) {
     switch(action.type) {
-        case 'LOGIN_SUCCESS':
+        case LOGIN_SUCCESS:
+            console.log(action.payload);
+            console.log(state);
+            const {accessToken, userInfo} = action.payload;
             return {
                 ...state,
-                ...action.payload
-            }
+                accessToken,
+                ...userInfo,
+            };
+        case LOGIN_FAILED:
         default:
             return state;
     }

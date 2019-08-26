@@ -36,7 +36,7 @@ export const getTeamSelectionEpic = action$ =>
     tap(action => console.log('go through getTeamSelectionEpic epic ', action)),
     mergeMap(({type, payload}) => {
         // using json-server for mock
-        return ajax.getJSON('http://localhost:4000/team');
+        return ajax.getJSON('http://localhost:3001/team');
     }),
     tap(response => console.log('here in tap', response)), // log the file
     map(response => insertTeamInfo(response)),
