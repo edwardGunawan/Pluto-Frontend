@@ -51,7 +51,7 @@ server.post('/login', (req,res) => {
     const {email, password, role} = req.body.cred;
     console.log(req.body);
     if(!isAuthenticated({email,password, role})) {
-        res.status(403).send();
+        res.status(200).send();
     }
 
     const accessToken = createToken({email,password});
@@ -62,14 +62,40 @@ server.post('/login', (req,res) => {
 
 
 server.post('/logout', (req,res) => {
-    return res.status(200).send();
+    res.status(200).send();
 })
 
 
-server.post('/register/', (req,res,next) => {
-    req.body.slug = createSlug(req.body.name);
-    next();
+server.post('/register', (req,res) => {
+    const {username, password, team, age, role} = req.body.user;
+    console.log(username);
+    console.log(password);
+    console.log(team);
+    console.log(age);
+    console.log(role);
+    if(!validateRegistration(req.body.user)) {
+        res.status(400).send()
+    };
+
+    res.status(200).send();
 });
+
+server.get('/teams/:username', (req,res,next) => {
+    const {members} = db;
+    const {username} = req.params;
+    console.log(username);
+    let teams = [];
+    Object.values(members).forEach(val => {
+        console.log(val.username);
+        if(val['username'] === username){
+            teams = val.team;
+            
+        }
+    });
+
+    res.status(200).json(teams);
+});
+
 
 
 server.use(router);
@@ -114,4 +140,15 @@ function isAuthenticated({email, password, role}) {
     if(!members.hasOwnProperty(email)) return false;
     
     return members[`${email}`].password === password && members[`${email}`].role.toLowerCase() === role.toLowerCase();
+}
+
+function validateRegistration(user) {
+    const {username, password, team, age, role} = user;
+    return username && password && team && age && role;
+    // if(!username) return 'username is required';
+    // if(!password) return 'password is required';
+    // if(!team) return 'team is required';
+    // if(!role) return 'role is required';
+    // if(!age) return 'age is required';
+    // return '';
 }

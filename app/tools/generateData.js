@@ -27,7 +27,7 @@ for(let i = 0 ; i< 20; i++) {
             email,
             password: faker.internet.password(),
             age: 23,
-            team: database.teams[i],
+            team: [database.teams[getRandom(10)],database.teams[getRandom(2)]],
             role: 'User',
         }
     };
@@ -48,12 +48,16 @@ for(let i = 0 ; i< 10; i++) {
             email,
             password: 'admin123',
             age: 25,
-            team: database.teams[i],
+            team: [database.teams[getRandom(5)],database.teams[getRandom(8)]],
             role: 'Admin'
         }
     }
 }
 
+
+function getRandom(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
 
 
 

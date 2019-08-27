@@ -27,7 +27,6 @@ class Login extends Component {
 
     handleChange = (e) => {
         const {name, value} = e.target;
-        const {email, password} = this.state;
         console.log(name, value);
         const updatedUsersInfo = {
             ...this.state,
