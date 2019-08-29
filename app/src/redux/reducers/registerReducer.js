@@ -1,13 +1,13 @@
 import initialState from '../initialState';
-import {INSERT_TEAM_INFO, SUBMIT_REGISTRATION_REQUEST, REGISTER_FAILED, REGISTER_SUCCESS} from '../actions/registerAction';
+import { SUBMIT_REGISTRATION_REQUEST, REGISTER_FAILED, REGISTER_SUCCESS} from '../actions/registerAction';
 
 export default function registerReducer(state = initialState.register,  action) {
     console.log(action.type);
     switch(action.type) {
-        case INSERT_TEAM_INFO:
-            return Object.assign({}, state, {
-                teams: action.payload,
-            });
+        // case GET_TEAM_SELECTION:
+        //     return Object.assign({}, state, {
+        //         teams: action.payload,
+        //     });
         case SUBMIT_REGISTRATION_REQUEST:
             return {
                 ...state,

@@ -49,20 +49,27 @@ server.use((req,res,next) => {
 
 server.post('/login', (req,res) => {
     const {email, password, role} = req.body.cred;
-    console.log(req.body);
+    // console.log('req body', req.body);
     if(!isAuthenticated({email,password, role})) {
-        res.status(200).send();
+        res.status(403).send();
+        res.end();
     }
 
     const accessToken = createToken({email,password});
     const userInfo = getUserInfo(email);
-    console.log(accessToken);
+    console.log(accessToken, userInfo);
     res.status(200).json({userInfo, accessToken});
 });
 
 
 server.post('/logout', (req,res) => {
     res.status(200).send();
+})
+
+server.get('/users', (req,res) => {
+    console.log(req.headers);
+    const { members } = db;
+    res.status(200).json(members[Object.keys(members)[0]]);
 })
 
 
@@ -80,20 +87,20 @@ server.post('/register', (req,res) => {
     res.status(200).send();
 });
 
-server.get('/teams/:username', (req,res,next) => {
+// get all the users corresponding to the team, either admin, or user
+server.get('/teams/:teamName', (req,res,next) => {
     const {members} = db;
-    const {username} = req.params;
-    console.log(username);
-    let teams = [];
+    const {teamName} = req.params;
+    console.log(teamName);
+    let users = [];
     Object.values(members).forEach(val => {
-        console.log(val.username);
-        if(val['username'] === username){
-            teams = val.team;
-            
+        const {Admin={}, User={}} = val;
+        if(Admin.indexOf(teamName)) {
+            users = [...users, val[username]];
         }
     });
 
-    res.status(200).json(teams);
+    res.status(200).json({teamName,users});
 });
 
 
@@ -135,11 +142,11 @@ function getUserInfo(email) {
 }
 
 // check if users exist in db 
-function isAuthenticated({email, password, role}) {
+function isAuthenticated({email, password}) {
     const {members} = db;
     if(!members.hasOwnProperty(email)) return false;
     
-    return members[`${email}`].password === password && members[`${email}`].role.toLowerCase() === role.toLowerCase();
+    return members[`${email}`].password === password;
 }
 
 function validateRegistration(user) {

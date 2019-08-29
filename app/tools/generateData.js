@@ -27,8 +27,10 @@ for(let i = 0 ; i< 20; i++) {
             email,
             password: faker.internet.password(),
             age: 23,
-            team: [database.teams[getRandom(10)],database.teams[getRandom(2)]],
-            role: 'User',
+            role: {
+                'Admin': [database.teams[getRandom(10)], database.teams[getRandom(2)]],
+                'User': [database.teams[getRandom(1)], database.teams[getRandom(6)]]
+            },
         }
     };
 }
@@ -48,8 +50,10 @@ for(let i = 0 ; i< 10; i++) {
             email,
             password: 'admin123',
             age: 25,
-            team: [database.teams[getRandom(5)],database.teams[getRandom(8)]],
-            role: 'Admin'
+            role: {
+                'Admin': [database.teams[getRandom(5)], database.teams[getRandom(8)]],
+                'User' : [database.teams[getRandom(4)], database.teams[getRandom(7)]],
+            }
         }
     }
 }

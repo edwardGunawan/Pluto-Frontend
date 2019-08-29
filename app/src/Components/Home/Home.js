@@ -2,16 +2,16 @@ import React from 'react';
 import {Calendar, momentLocalizer, Views} from "react-big-calendar";
 import moment from 'moment';
 import events from './events';
+import {connect} from 'react-redux';
+import {fetchUserInTeam} from '../../redux/actions/teamAction';
+import { getUserInfoWithAccessToken } from '../../redux/actions/authenticationAction';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { arrayExpression } from '@babel/types';
+
+import Modal from './Modal';
+import SelectInput from './SelectInput';
 
 moment.locale('en');
 const localizer = momentLocalizer(moment);
-
-let allViews = Object.keys(Views).map(k => Views[k]);
 
 class Home extends React.Component {
     state = {
@@ -20,20 +20,36 @@ class Home extends React.Component {
         show: false,
     }
 
-    handleSelect = ({ start, end }) => {
-        const title = window.prompt('New Event name')
-        if (title)
-          this.setState({
-            events: [
-              ...this.state.events,
-              {
-                start,
-                end,
-                title,
-              },
-            ],
-          })
+    componentDidMount() {
+        const { getUserInfoWithAccessToken, username } = this.props;
+        if(!username) {
+            const accessToken = localStorage.getItem('access_token');
+            getUserInfoWithAccessToken(accessToken);
+        }
+
+
+    }
+
+    handleSelect = (selectInfo) => {
+        console.log(selectInfo);
+        // const title = window.prompt('New Event name')
+        // if (title)
+        //   this.setState({
+        //     events: [
+        //       ...this.state.events,
+        //       {
+        //         start,
+        //         end,
+        //         title,
+        //       },
+        //     ],
+        //   })
       }
+    
+    handleSlot = (slotInfo) => {
+        console.log(slotInfo);
+        this.handleShow();
+    }
 
     handleClose = (e) => {
         console.log(e);
@@ -44,60 +60,60 @@ class Home extends React.Component {
         this.setState({show:true});
     }
     
+    handleSelectionChange = (event) => {
+        const {name, value} = event.target;
+        console.log(name, value);
+        
+        this.setState({[name]: value});
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.handleClose();
+    }
       
 
     render () {
-        const {events, show} = this.state;
+        const {events, show, Team='Select'} = this.state;
+        const {teamSelection} = this.props;
         return (
-            <div style={{height: 700}}>
-                <Modal show={show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                    <Modal.Title>New Events</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form onSubmit={this.handleSelect}>
-                            <Form.Group>
-                                <Form.Label>Event Name</Form.Label>
-                                <Form.Control type="text" placeholder="Meeting" />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Time</Form.Label>
-                                <Form.Control as="select">
-                                    <option>Select</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </Form.Control>
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Save Changes
-                    </Button>
-                    </Modal.Footer>
+            <div style={{height: 700, width: 900, margin: 'auto'}}>
+                <Modal onClose={this.handleClose} show={show} onSubmit={this.handleSubmit}>
+                    <SelectInput label={'Team'} selections={teamSelection} handleChange={this.handleSelectionChange} value={Team} />
                 </Modal>
-            <Calendar
+                    
+                <Calendar
                     style={{"cursor": "pointer"}}
                     selectable
+                    popup
                     localizer={localizer}
                     startAccessor='start'
                     endAccessor='end'
                     events={events}
-                    views={allViews}
-                    defaultView={Views.MONTHS}
+                    views={[Views.MONTH, Views.WEEK, Views.DAY]}
+                    defaultView={Views.MONTH}
                     onSelectEvent={(e) => console.log('selecting events', e)}
-                    onSelectSlot={this.handleShow}
+                    onSelectSlot={this.handleSlot}
                     />
             </div>
         )
     }
 }
 
+const mapStateToProps = ({user, teams = null}, {history}) => {
+    const {isAuthenticated, role, username} = user;
+    const {Admin = null} = role;
+    if (!isAuthenticated) history.push('/');
+    return {
+        teamSelection: Admin,
+        username,
+        teams,
+    }
+}
 
-export default Home;
+const mapDispatchToProps = {
+    getUserInfoWithAccessToken,
+    fetchUserInTeam,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

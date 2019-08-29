@@ -1,5 +1,6 @@
 import React from 'react';
 import * as registrationActionCreators from '../../redux/actions/registerAction';
+import * as authenticationActionCreators from '../../redux/actions/authenticationAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
@@ -12,16 +13,20 @@ class Register extends React.Component {
     }
     
     componentDidMount() {
-        const { actions, username } = this.props;
-
-        actions.getTeamSelection(username);
+        const { usersActions, username } = this.props;
+        
+        if(!username) {
+            const accessToken = localStorage.getItem('access_token');
+            console.log('getting access token', accessToken);
+            usersActions.getUserInfoWithAccessToken(accessToken);
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { actions } = this.props;
+        const { registerActions } = this.props;
         const { user } = this.state;
-        actions.submit(user);
+        registerActions.submit(user);
     }
 
     handleChange = event => {
@@ -97,14 +102,14 @@ class Register extends React.Component {
 
 const mapStateToProps = ({registration, user}, ownProps) => {
 
-    const { teams = [], message =''} = registration;
+    const { message =''} = registration;
     
-    const { username, isAuthenticated } = user;
+    const { username, role, isAuthenticated } = user;
     const {history} = ownProps;
     if(message === 'success') history.push('/calenar')
     if(!isAuthenticated) history.push('/');
     return {
-        teams,
+        teams: role.Admin,
         message,
         username,
     }
@@ -112,7 +117,8 @@ const mapStateToProps = ({registration, user}, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        actions: bindActionCreators(registrationActionCreators,dispatch)
+        registerActions: bindActionCreators(registrationActionCreators,dispatch),
+        usersActions : bindActionCreators(authenticationActionCreators,dispatch),
     }
 }
 

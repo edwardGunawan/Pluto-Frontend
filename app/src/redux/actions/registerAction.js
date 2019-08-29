@@ -14,12 +14,12 @@ export const submit = (requestBody) => ({
         payload: requestBody,
     });
 
-export const getTeamSelection = (userName) => ({
-    type: GET_TEAM_SELECTION,
-    payload: userName,
-});
+// export const getTeamSelection = (userName) => ({
+//     type: GET_TEAM_SELECTION,
+//     payload: userName,
+// });
 
-export const insertTeamInfo = (payload) => ({type: INSERT_TEAM_INFO, payload});
+// export const insertTeamInfo = (payload) => ({type: INSERT_TEAM_INFO, payload});
 
 const registerSuccess = () => ({type: REGISTER_SUCCESS});
 
@@ -35,17 +35,17 @@ const registerFailed = (message) => ({type : REGISTER_FAILED, message})
  * }
  */
 // getTeamSelectionEpic
-export const getTeamSelectionEpic = action$ => 
-    action$.pipe(
-    ofType(GET_TEAM_SELECTION), // this is the same as filter(action => action === 'GET_TEAM_SELECTION')
-    tap(action => console.log('go through getTeamSelectionEpic epic ', action)),
-    mergeMap( ({payload}) => {
-        // using json-server for mock
-        return ajax.getJSON(`http://localhost:3001/teams/${payload}`);
-    }),
-    tap(response => console.log('here in tap', response)), // log the file
-    map(response => insertTeamInfo(response)),
-    );
+// export const getTeamSelectionEpic = action$ => 
+//     action$.pipe(
+//     ofType(GET_TEAM_SELECTION), // this is the same as filter(action => action === 'GET_TEAM_SELECTION')
+//     tap(action => console.log('go through getTeamSelectionEpic epic ', action)),
+//     mergeMap( ({payload}) => {
+//         // using json-server for mock
+//         return ajax.getJSON(`http://localhost:3001/teams/${payload}`);
+//     }),
+//     tap(response => console.log('here in tap', response)), // log the file
+//     map(response => insertTeamInfo(response)),
+//     );
 
 export const submitRegistrationEpic = action$ => 
     action$.pipe(

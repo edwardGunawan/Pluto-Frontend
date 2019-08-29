@@ -1,19 +1,23 @@
 import {combineReducers} from 'redux';
 import { combineEpics } from 'redux-observable';
-import { getTeamSelectionEpic, submitRegistrationEpic } from '../actions/registerAction';
-import { loginEpic, logoutEpic } from '../actions/authenticationAction';
+import { submitRegistrationEpic } from '../actions/registerAction';
+import { loginEpic, logoutEpic, getUserInfoEpic } from '../actions/authenticationAction';
+import { fetchTeamEpic } from '../actions/teamAction';
 import user from './authenticationReducer';
 import registration from './registerReducer';
+import teams from './teamReducer';
 
 // put all your epic function here
 export const rootEpic = combineEpics(
-    getTeamSelectionEpic, 
     submitRegistrationEpic,
     loginEpic, 
-    logoutEpic); 
+    logoutEpic,
+    getUserInfoEpic,
+    fetchTeamEpic); 
 
 const rootReducers = combineReducers({
     user,
+    teams,
     registration,
 })
 

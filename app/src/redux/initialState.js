@@ -6,8 +6,8 @@ export default {
         isAuthenticated: localStorage.getItem('access_token') ? true : false,
         isFetching: false,
     },
-    register : {
-        teams:[],
-    }
+    teams : { },
+    // either message failed or succeed
+    register:{},
     
 }

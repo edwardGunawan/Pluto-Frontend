@@ -2,6 +2,7 @@ import {ofType} from 'redux-observable';
 import {of} from 'rxjs';
 import { mergeMap, tap, map, catchError } from 'rxjs/operators';
 import {ajax} from 'rxjs/ajax';
+import {fetchUserInTeam} from './teamAction';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -9,6 +10,7 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const GET_USER_INFO_WITH_ACCESS_TOKEN = 'GET_USER_INFO_WITH_ACCESS_TOKEN';
 function loginSuccess(usersObj) {
     return {
         type: LOGIN_SUCCESS,
@@ -48,9 +50,36 @@ function logoutFailure(message) {
         type: LOGOUT_FAILURE,
         message,
     } 
-
 }
 
+export function getUserInfoWithAccessToken(token) {
+    return {type: GET_USER_INFO_WITH_ACCESS_TOKEN, token}
+}
+
+export const getUserInfoEpic= (actions$) =>
+        actions$.pipe(
+            ofType(GET_USER_INFO_WITH_ACCESS_TOKEN),
+            mergeMap(({token}) => 
+            ajax({
+                    url: 'http://localhost:3001/users',
+                    method: 'GET',
+                    headers :{
+                        accessToken: `bearer-${token}`,
+                    }
+                }).pipe(
+                    tap((res) => console.log('response in refetching user', res)),
+                    map((res) => res.response),
+                    map((res) => loginSuccess(res)),
+                    catchError(e => {
+                        console.error(e);
+                        return of(loginFailure(e.message));
+                    })
+
+                )
+            ),
+            
+
+        )
 
 export function loginEpic(actions$) {
     return actions$.pipe(
