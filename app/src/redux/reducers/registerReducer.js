@@ -2,7 +2,6 @@ import initialState from '../initialState';
 import { SUBMIT_REGISTRATION_REQUEST, REGISTER_FAILED, REGISTER_SUCCESS} from '../actions/registerAction';
 
 export default function registerReducer(state = initialState.register,  action) {
-    console.log(action.type);
     switch(action.type) {
         // case GET_TEAM_SELECTION:
         //     return Object.assign({}, state, {

@@ -91,12 +91,13 @@ server.post('/register', (req,res) => {
 server.get('/teams/:teamName', (req,res,next) => {
     const {members} = db;
     const {teamName} = req.params;
-    console.log(teamName);
     let users = [];
     Object.values(members).forEach(val => {
-        const {Admin={}, User={}} = val;
-        if(Admin.indexOf(teamName)) {
-            users = [...users, val[username]];
+        const {role, username} = val;
+        const {Admin={}, User={}} = role;
+        
+        if(Admin.indexOf(teamName) > 0  || User.indexOf(teamName) > 0) {
+            users = [...users, username];
         }
     });
 

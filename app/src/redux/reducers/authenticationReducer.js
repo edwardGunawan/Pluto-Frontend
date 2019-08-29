@@ -9,7 +9,7 @@ export default function authenticationReducer(state=initialState.currentUser,act
                 isFetching: true,
             }
         case LOGIN_SUCCESS:
-            console.log(action.usersObj);
+            console.log(action);
             return Object.assign({}, state, {
                 ...action.usersObj,
                 isAuthenticated: true,

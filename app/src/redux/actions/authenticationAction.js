@@ -2,7 +2,6 @@ import {ofType} from 'redux-observable';
 import {of} from 'rxjs';
 import { mergeMap, tap, map, catchError } from 'rxjs/operators';
 import {ajax} from 'rxjs/ajax';
-import {fetchUserInTeam} from './teamAction';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

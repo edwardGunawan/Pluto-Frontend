@@ -41,24 +41,25 @@ class Login extends Component {
     }
 
     render() {
-        const {role, email, password} = this.state;
+        const { email, password} = this.state;
         return (
-          <Form onSubmit={this.handleSubmit}>
-            <h2>{role} Login</h2>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" name="email" value={email} onChange={this.handleChange} placeholder="Enter email" />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" name="password" value={password}  onChange={this.handleChange} placeholder="Password" />
-            </Form.Group>
-            
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-            <Button size="sm" variant="link" onClick={this.handleChangerole}>I am not {role}</Button>
-          </Form>
+            <div style={{width: '50%', height:'70%', margin: 'auto', marginTop:'40px'}}>
+            <h2> Login </h2>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" value={email} onChange={this.handleChange} placeholder="Enter email" />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" value={password}  onChange={this.handleChange} placeholder="Password" />
+                </Form.Group>
+                
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+          </div>
         );
     }
 }
@@ -67,7 +68,7 @@ function mapStateToProps(state, ownProps) {
     const {role, email, isAuthenticated} = state.user;
     console.log(isAuthenticated);
     const {history} = ownProps;
-    if(isAuthenticated) history.push('/');
+    if(isAuthenticated) history.push('/home');
     return {
         role,
         email,

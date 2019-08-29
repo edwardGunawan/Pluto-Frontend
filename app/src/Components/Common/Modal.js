@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-const ModalComponent = ({onClose, onSubmit, show,...props}) => {
+const ModalComponent = ({onClose, onSubmit, show, modalTitle, ...props}) => {
     return (
         <Modal show={show} onHide={onClose}>
             <Modal.Header closeButton>
-                <Modal.Title>New Events</Modal.Title>
+                <Modal.Title>{ modalTitle }</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 { props.children }

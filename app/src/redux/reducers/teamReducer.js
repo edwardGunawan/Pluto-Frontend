@@ -1,4 +1,4 @@
-import {FETCH_USER_ERROR,FETCH_USER_IN_TEAM_SUCCESS} from '../actions/teamAction';
+import {FETCH_USER_ERROR,FETCH_USER_IN_TEAM_SUCCESS, POPULATE_TEAM_NAME} from '../actions/teamAction';
 import initialState from '../initialState';
 
 export default function teamReducer(state=initialState.teams, action) {
@@ -14,6 +14,12 @@ export default function teamReducer(state=initialState.teams, action) {
             return {
                 ...state,
                 message,
+            }
+        case POPULATE_TEAM_NAME:
+            const {teamsObj} = action;
+            return {
+                ...state,
+                ...teamsObj,
             }
         default:
             return state;

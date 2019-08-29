@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import TextInput from '../Common/TextInput';
+import SelectInput from '../Common/SelectInput';
 
 class Register extends React.Component {
     state = {
@@ -53,45 +55,26 @@ class Register extends React.Component {
         } = this.state.user;
 
         return (
+            <div style={{width: '50%', height:'70%', margin: 'auto'}}>
+            <h2>Registration</h2>
+            { message && <Alert variant="danger"> {message} </Alert>}
             <Form onSubmit={this.handleSubmit}>
-                <h2>Registration</h2>
-                { message && <Alert variant="danger"> {message} </Alert>}
-                <Form.Group controlId="formGroupUsername">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" value={username} onChange={this.handleChange} name="username" placeholder="Enter Username" />
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" value={password} onChange={this.handleChange} name="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group contorlId="formBasicTeam">
-                    <Form.Label>Team</Form.Label>
-                    <Form.Control as="select" onChange={this.handleChange} name="team" value={team}>
-                        <option>Select ...</option>
-                        {teams.length > 0 && teams.map((team, idx) => {
-                            return (
-                                <option key={`${team}-${idx}`}>{team}</option>
-                            )
-                        })}
-                    </Form.Control>
-                </Form.Group>
-                <Form.Group controlId="age">
-                    <Form.Label>Age</Form.Label>
-                    <Form.Control placeholder="23" onChange={this.handleChange} name="age" value={age}/>
-                </Form.Group>
-                <Form.Group controlId="role">
-                    <Form.Label>Role</Form.Label>
-                     
-                    <Form.Control as="select" name="role" onChange={this.handleChange} value={role}>
-                        <option>Select...</option>
-                        <option>Admin</option>
-                        <option>User</option>
-                    </Form.Control>
-                </Form.Group>
+             
+                <TextInput formLabel={'Username'} formType={'text'} handleChange={this.handleChange} value={username} name={'username'} placeholder= {'Enter Username'} />
+
+                <TextInput formLabel={'Password'} formType={'password'} handleChange={this.handleChange} value={password} name={'password'} placeholder= {'Enter Password'} />
+
+                <SelectInput label={'Team'} selections={teams} handleChange={this.handleChange} name={'team'} value={team}/>
+
+                <TextInput formLabel={'Age'} formType={'text'} handleChange={this.handleChange} value={age} name={'age'} placeholder={'23'} />
+
+                <SelectInput label={'Role'} selections={['Admin', 'User']} handleChange={this.handleChange} value={role} name={'role'} />
+
 
                 <Button variant="primary" type="submit"> Submit </Button>
 
             </Form>
+            </div>
         )
             
     }
@@ -106,8 +89,7 @@ const mapStateToProps = ({registration, user}, ownProps) => {
     
     const { username, role, isAuthenticated } = user;
     const {history} = ownProps;
-    if(message === 'success') history.push('/calenar')
-    if(!isAuthenticated) history.push('/');
+    if(message === 'success') history.push('/calenar');
     return {
         teams: role.Admin,
         message,

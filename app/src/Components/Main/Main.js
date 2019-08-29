@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import Register from '../Register';
 import Home from '../Home';
-import AssignDates from '../AssignDates';
 
+import { getUserInfoWithAccessToken } from '../../redux/actions/authenticationAction';
 import * as authenticationAction from '../../redux/actions/authenticationAction';
 
 
@@ -24,6 +24,15 @@ class Main extends Component {
     logout();
 
   }
+
+  componentDidMount() {
+    const {username} = this.props;
+    if(!username) {
+      const accessToken = localStorage.getItem('access_token');
+      getUserInfoWithAccessToken(accessToken);
+  }
+    
+  }
     
     render() {
         return (
@@ -32,7 +41,7 @@ class Main extends Component {
               <Switch>
                 <Route path="/home" component={Home} />
                 <Route path="/register" component={Register} />
-                <Route path="/assign-dates" component={AssignDates}/>
+                {/* <Route path="/assign-dates" component={AssignDates}/> */}
               </Switch>
               
             </div>
@@ -42,14 +51,17 @@ class Main extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log('here in main', state.user);
-    const {isAuthenticated} = state.user;
+    const { isAuthenticated, username } = state.user;
     if(!isAuthenticated) ownProps.history.push('/login');
-    return {}
+    return {
+      username,
+    }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(authenticationAction.logoutRequest())
+    logout: () => dispatch(authenticationAction.logoutRequest()),
+    getUserInfoWithAccessToken: (accessToken) => dispatch(getUserInfoWithAccessToken(accessToken)),
   }
 }
 
