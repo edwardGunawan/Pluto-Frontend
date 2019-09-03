@@ -11,12 +11,12 @@ export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
 export const POPULATE_TEAM_NAME = 'POPULATE_TEAM_NAME';
 
 export const fetchUserInTeam = (team) => ({type: FETCH_USER_IN_TEAM, team});
-// populat team name in calendar page
+// populate team name in calendar page
 export const populateTeamName = (teams) => {
     const teamsObj = teams.reduce((acc,currVal) => {
         return {
             ...acc,
-            [currVal] : null
+            [currVal] : {color: '#2ecc71', users: null}
         }
     },{});
 
@@ -26,6 +26,8 @@ export const populateTeamName = (teams) => {
 }
 const fetchUserInTeamSuccess = ({teamName, users}) => ({type: FETCH_USER_IN_TEAM_SUCCESS, team:teamName, users});
 const fetchUserError = (message) => ({type: FETCH_USER_ERROR, message});
+
+
 
 
 export const fetchTeamEpic = (action$) => 

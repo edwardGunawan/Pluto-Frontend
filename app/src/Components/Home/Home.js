@@ -98,9 +98,9 @@ class Home extends React.Component {
         const { fetchUserInTeam, teams } = this.props;
         // console.log(name, value);
         // console.log('teams in handleselection change', teams);
-        // console.log(teams[value]);
+        console.log(teams[value]);
         // only fetch from server if the teams is null, and it is a team
-        if(name === 'team' && !teams[value]) fetchUserInTeam(value);
+        if(name === 'team' && !teams[value].users) fetchUserInTeam(value);
         const selected = {
             ...this.state.selected,
             [name]: value,
@@ -157,11 +157,12 @@ class Home extends React.Component {
         const {team, user} = selected;
         const {teamSelection, teams} = this.props;
         
+        
         return (
             <>
             <Modal modalTitle={modalTitle} onClose={this.handleClose} show={show} onSubmit={this.handleSubmit} >
                 <SelectInput label={'Team'} name={'team'} selections={teamSelection} handleChange={this.handleSelectionChange} value={team} />
-                { teams[team] && teams[team].length > 0 && <SelectInput label={'User'} name={'user'} selections={teams[team]} handleChange={this.handleSelectionChange} value={user}/> }
+                { teams[team] && teams[team].users && <SelectInput label={'User'} name={'user'} selections={teams[team].users} handleChange={this.handleSelectionChange} value={user}/> }
             </Modal>
 
             <Calendar
@@ -176,6 +177,17 @@ class Home extends React.Component {
                 defaultView={Views.MONTH}
                 onSelectEvent={this.handleSelectEvent}
                 onSelectSlot={this.handleSlot}
+                eventPropGetter={(e,start,end,isSelected) => {
+                    // console.log('entering eventPropGetter')
+                    // console.log(e);
+                    // console.log(start, end);
+                    // console.log(isSelected);
+                    return {
+                        style:{
+                            background: 'green',
+                        }
+                    }
+                }}
                 />
             </>
         )
@@ -187,6 +199,7 @@ const mapStateToProps = ({user, teams = {}}) => {
     console.log('teams in mapstateToprops', teams);
     console.log(user, teams);
     const {Admin = {}} = role;
+    
     // if (!isAuthenticated) history.push('/');
     return {
         teamSelection: Admin,

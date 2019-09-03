@@ -13,7 +13,8 @@ export const rootEpic = combineEpics(
     loginEpic, 
     logoutEpic,
     getUserInfoEpic,
-    fetchTeamEpic); 
+    fetchTeamEpic
+    ); 
 
 const rootReducers = combineReducers({
     user,

@@ -7,7 +7,9 @@ export default function teamReducer(state=initialState.teams, action) {
             const {users, team} = action;
             return {
                 ...state,
-                [team] : users
+                [team] : Object.assign({}, state[team], {
+                    users,
+                })
             }
         case FETCH_USER_ERROR:
             const {message} = action;
@@ -17,6 +19,7 @@ export default function teamReducer(state=initialState.teams, action) {
             }
         case POPULATE_TEAM_NAME:
             const {teamsObj} = action;
+            console.log(teamsObj);
             return {
                 ...state,
                 ...teamsObj,
