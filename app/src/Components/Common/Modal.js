@@ -13,7 +13,7 @@ const ModalComponent = ({onClose, onSubmit, show, modalTitle, ...props}) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={onClose}>
-                    Close
+                    {modalTitle === 'Edit Event' ?  'Delete' : 'Close'}
                 </Button>
                 <Button variant="primary" onClick={onSubmit}>
                     Save Changes

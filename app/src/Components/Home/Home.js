@@ -27,6 +27,7 @@ class Home extends React.Component {
         },
         slotInfo: null,
         modalTitle: null,
+        onEdit: false,
     }
 
     baseState = this.state;
@@ -59,29 +60,17 @@ class Home extends React.Component {
 
     handleSelectEvent = (eventInfo) => {
         console.log(eventInfo);
-        const {title, team} = eventInfo;
+        const {title, team, id} = eventInfo;
         this.setState({
             show: true,
             selected: {
                 team,
                 user: title,
+                id,
             },
             slotInfo: eventInfo,
             modalTitle: 'Edit Event',
         });
-
-        // const title = window.prompt('New Event name')
-        // if (title)
-        //   this.setState({
-        //     events: [
-        //       ...this.state.events,
-        //       {
-        //         start,
-        //         end,
-        //         title,
-        //       },
-        //     ],
-        //   })
       }
     
     handleSlot = (slotInfo) => {
@@ -89,7 +78,19 @@ class Home extends React.Component {
     }
 
     handleClose = () => {
+        const {modalTitle, events ,selected} = this.state;
+        const {id} = selected;
         this.resetModalForm();
+
+        if(modalTitle === 'Edit Event') {
+            console.log('going through modalTitle', modalTitle)
+            this.setState({
+                events : events.filter((e) => e.id !== id),
+            });    
+        }
+            
+
+        
     }
     
     handleSelectionChange = (event) => {
@@ -117,18 +118,17 @@ class Home extends React.Component {
         const {start, end} = slotInfo;
         const {user,team} = selected;
 
-        // console.log(events);
-        // console.log(start, end);
-
         if(user === 'Select' || team === 'Select') return;
-        
         
         
         // check if eventInfo exist
         const index = _.findIndex(events, (e) => e.id === slotInfo.id);
 
-        // console.log(index);
+
         let newEvents =[...events]
+
+        
+        this.resetModalForm();
 
         if( index === -1) {
             newEvents.push({
@@ -147,8 +147,7 @@ class Home extends React.Component {
         }
 
         this.setState({
-            events: newEvents,
-            show: false,
+            events: newEvents
         });
     }
       
@@ -160,32 +159,30 @@ class Home extends React.Component {
         
         return (
             <>
-            <Modal modalTitle={modalTitle} onClose={this.handleClose} show={show} onSubmit={this.handleSubmit}>
+            <Modal modalTitle={modalTitle} onClose={this.handleClose} show={show} onSubmit={this.handleSubmit} >
                 <SelectInput label={'Team'} name={'team'} selections={teamSelection} handleChange={this.handleSelectionChange} value={team} />
                 { teams[team] && teams[team].length > 0 && <SelectInput label={'User'} name={'user'} selections={teams[team]} handleChange={this.handleSelectionChange} value={user}/> }
             </Modal>
 
-            {/* <div style={{height: 700, width: 900, margin: 'auto'}}> */}
-                <Calendar
-                    style={{"cursor": "pointer",height: 700, width: '80%', margin: 'auto'}}
-                    selectable
-                    popup
-                    localizer={localizer}
-                    startAccessor='start'
-                    endAccessor='end'
-                    events={events}
-                    views={[Views.MONTH, Views.WEEK, Views.DAY]}
-                    defaultView={Views.MONTH}
-                    onSelectEvent={this.handleSelectEvent}
-                    onSelectSlot={this.handleSlot}
-                    />
-            {/* </div> */}
+            <Calendar
+                style={{"cursor": "pointer",height: 700, width: '80%', margin: 'auto'}}
+                selectable
+                popup
+                localizer={localizer}
+                startAccessor='start'
+                endAccessor='end'
+                events={events}
+                views={[Views.MONTH, Views.WEEK, Views.DAY]}
+                defaultView={Views.MONTH}
+                onSelectEvent={this.handleSelectEvent}
+                onSelectSlot={this.handleSlot}
+                />
             </>
         )
     }
 }
 
-const mapStateToProps = ({user, teams = {}}, {history}) => {
+const mapStateToProps = ({user, teams = {}}) => {
     const {role, username} = user;
     console.log('teams in mapstateToprops', teams);
     console.log(user, teams);
