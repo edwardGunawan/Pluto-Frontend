@@ -11,5 +11,10 @@ export default {
     // either message failed or succeed
     // register: {message: 'success', }
     register:{},
+
+    // either message failed or succeed
+    // events : {message: 'success', event: []}
+    events: {},
+
     
 }

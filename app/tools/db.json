@@ -1,346 +1,748 @@
 {
   "members": {
-    "Walker.Kessler93@yahoo.com": {
-      "id": "429556a0-3ad4-4a34-be0e-3a9384a29fb5",
-      "username": "Arvilla48",
-      "email": "Walker.Kessler93@yahoo.com",
-      "password": "n64YhmILQOOzlc8",
+    "Katlyn_Shields@yahoo.com": {
+      "id": "c5824504-0f71-4d7f-bb65-0a18b2ef9929",
+      "username": "Freddy.Satterfield82",
+      "email": "Katlyn_Shields@yahoo.com",
+      "password": "ZiS6nOYVacAeT0f",
       "age": 23,
       "role": {
-        "Admin": ["networks", "niches"],
-        "User": ["interfaces", "networks"]
+        "Admin": [
+          5,
+          0
+        ],
+        "User": [
+          0,
+          1
+        ]
       }
     },
-    "Gilda8@yahoo.com": {
-      "id": "e3e9b037-074d-4557-b0b3-cc97d2088c1c",
-      "username": "Kali54",
-      "email": "Gilda8@yahoo.com",
-      "password": "auxhxyrRd4FG_PS",
+    "Amir86@hotmail.com": {
+      "id": "4851d3c2-5f22-477a-92e1-6926e4121015",
+      "username": "Daisy42",
+      "email": "Amir86@hotmail.com",
+      "password": "Oj_GVMOSBLVEJ86",
       "age": 23,
       "role": {
-        "Admin": ["initiatives", "interfaces"],
-        "User": ["interfaces", "technologies"]
+        "Admin": [
+          5,
+          1
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Malvina_Bechtelar@gmail.com": {
-      "id": "7dc6aca6-16f6-4162-8d75-8db6c5dc3cd3",
-      "username": "Jeramie20",
-      "email": "Malvina_Bechtelar@gmail.com",
-      "password": "kd5STD3m94JuH2d",
+    "Christy_Treutel42@gmail.com": {
+      "id": "eeeebe00-696a-4201-91e1-0acc85e4cf92",
+      "username": "Alexanne15",
+      "email": "Christy_Treutel42@gmail.com",
+      "password": "iSnt7mJTQ1IR0rJ",
       "age": 23,
       "role": {
-        "Admin": ["initiatives", "niches"],
-        "User": ["interfaces", "eyeballs"]
+        "Admin": [
+          4,
+          0
+        ],
+        "User": [
+          0,
+          2
+        ]
       }
     },
-    "Brandt78@hotmail.com": {
-      "id": "6fe101b7-c579-4c53-a72c-c35d32283746",
-      "username": "Cecil_King",
-      "email": "Brandt78@hotmail.com",
-      "password": "ICyYIOcnhmhG7k0",
+    "Lauren3@hotmail.com": {
+      "id": "12095911-1245-451b-b124-1507533d0724",
+      "username": "Cordelia.Grady",
+      "email": "Lauren3@hotmail.com",
+      "password": "KiLbvfc2dTuDy3V",
       "age": 23,
       "role": {
-        "Admin": ["networks", "interfaces"],
-        "User": ["interfaces", "interfaces"]
+        "Admin": [
+          2,
+          0
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Uriel_Donnelly@yahoo.com": {
-      "id": "2ee8266d-cac8-4234-89c4-b503aae8ad4e",
-      "username": "Ramon.Orn",
-      "email": "Uriel_Donnelly@yahoo.com",
-      "password": "7Z5k7KiL4Pz5Q4z",
+    "Pedro51@yahoo.com": {
+      "id": "41929f2a-223e-445b-8e6a-3b4b61802fdb",
+      "username": "Orville.Nikolaus",
+      "email": "Pedro51@yahoo.com",
+      "password": "ADLc02TjQmFTqhV",
       "age": 23,
       "role": {
-        "Admin": ["supply-chains", "niches"],
-        "User": ["interfaces", "networks"]
+        "Admin": [
+          3,
+          1
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Lorna.Breitenberg@yahoo.com": {
-      "id": "ddcc89a1-4a0c-4890-98c7-c9e286c3dfd0",
-      "username": "Grace.Stanton54",
-      "email": "Lorna.Breitenberg@yahoo.com",
-      "password": "Ulox_dzKvfinWP6",
+    "Esteban.Lakin15@yahoo.com": {
+      "id": "54f7b890-6b9c-4822-96ab-1133ef29b465",
+      "username": "Maude73",
+      "email": "Esteban.Lakin15@yahoo.com",
+      "password": "y5BAg7zoN2KbPUW",
       "age": 23,
       "role": {
-        "Admin": ["niches", "interfaces"],
-        "User": ["interfaces", "networks"]
+        "Admin": [
+          4,
+          0
+        ],
+        "User": [
+          0,
+          1
+        ]
       }
     },
-    "Caleigh_Haley14@gmail.com": {
-      "id": "df105f59-4aaf-4ec3-9dc1-a5289648dfab",
-      "username": "Christopher36",
-      "email": "Caleigh_Haley14@gmail.com",
-      "password": "0WN9ETkIGyulq2G",
+    "Earl_Miller58@gmail.com": {
+      "id": "4b793c74-1515-44b4-9160-e6b4ac8b35ea",
+      "username": "Eunice_Hintz79",
+      "email": "Earl_Miller58@gmail.com",
+      "password": "NrxjE7LL5sODHW6",
       "age": 23,
       "role": {
-        "Admin": ["technologies", "niches"],
-        "User": ["interfaces", "interfaces"]
+        "Admin": [
+          3,
+          1
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Brendon.Kihn74@gmail.com": {
-      "id": "9b5043af-6357-4d35-bb9c-2287e760b2b3",
-      "username": "Barney_Glover",
-      "email": "Brendon.Kihn74@gmail.com",
-      "password": "pkiIBspegazoHPt",
+    "Ardith.Crist43@gmail.com": {
+      "id": "8d665c5f-5a54-4918-a077-81eaf543ef83",
+      "username": "Nathen_Lind83",
+      "email": "Ardith.Crist43@gmail.com",
+      "password": "ducBO411EN4PGr1",
       "age": 23,
       "role": {
-        "Admin": ["eyeballs", "niches"],
-        "User": ["interfaces", "niches"]
+        "Admin": [
+          8,
+          0
+        ],
+        "User": [
+          0,
+          0
+        ]
       }
     },
-    "Libby_Bogan56@yahoo.com": {
-      "id": "284775c7-ea7f-4b55-b556-518212d4f789",
-      "username": "Eric51",
-      "email": "Libby_Bogan56@yahoo.com",
-      "password": "HbFOgSwe6QkzKU4",
+    "Merritt84@hotmail.com": {
+      "id": "39cf92d6-1f95-49be-b5df-960c34d21ebd",
+      "username": "Jude92",
+      "email": "Merritt84@hotmail.com",
+      "password": "Zyby75DV8qalTsV",
       "age": 23,
       "role": {
-        "Admin": ["networks", "interfaces"],
-        "User": ["interfaces", "interfaces"]
+        "Admin": [
+          3,
+          1
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Josiane2@hotmail.com": {
-      "id": "2062f1c3-cb99-4053-addc-0589f2092d8e",
-      "username": "Ashleigh_Brekke31",
-      "email": "Josiane2@hotmail.com",
-      "password": "KJ0c1QbzQJOj0Ir",
+    "Eldridge.Paucek@hotmail.com": {
+      "id": "3d2688a2-2ec7-42fc-b81e-0f2642d2f058",
+      "username": "Yasmin95",
+      "email": "Eldridge.Paucek@hotmail.com",
+      "password": "AEnWUZ09hCT85XZ",
       "age": 23,
       "role": {
-        "Admin": ["niches", "interfaces"],
-        "User": ["interfaces", "technologies"]
+        "Admin": [
+          8,
+          1
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Keagan14@gmail.com": {
-      "id": "a1b444ba-82c7-47d4-8f00-406570a29db1",
-      "username": "Kristina_Morissette",
-      "email": "Keagan14@gmail.com",
-      "password": "lInA564c868F7si",
+    "Rosalinda_Berge@yahoo.com": {
+      "id": "b411cceb-62e1-47ef-9229-784c07fb5ba5",
+      "username": "Lesly70",
+      "email": "Rosalinda_Berge@yahoo.com",
+      "password": "r4VOZSrdfTMhj6Y",
       "age": 23,
       "role": {
-        "Admin": ["technologies", "niches"],
-        "User": ["interfaces", "networks"]
+        "Admin": [
+          6,
+          1
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Rosalee_OKon@yahoo.com": {
-      "id": "6a75dcd9-0759-4da8-bcf4-46c79ebcc4ca",
-      "username": "Braxton_Lemke83",
-      "email": "Rosalee_OKon@yahoo.com",
-      "password": "uQQxlLuud2NVOc0",
+    "Glenna_Grady@gmail.com": {
+      "id": "06b5521b-9461-4592-86c9-9ebd9fc2485b",
+      "username": "Brando.Borer",
+      "email": "Glenna_Grady@gmail.com",
+      "password": "i7f4vZdtGultM1o",
       "age": 23,
       "role": {
-        "Admin": ["networks", "niches"],
-        "User": ["interfaces", "niches"]
+        "Admin": [
+          6,
+          0
+        ],
+        "User": [
+          0,
+          0
+        ]
       }
     },
-    "Ismael.Turcotte82@gmail.com": {
-      "id": "30f2fc64-fed7-4f17-bc6b-1dd93a40c705",
-      "username": "Brendan.Toy47",
-      "email": "Ismael.Turcotte82@gmail.com",
-      "password": "eit8NCQ2v87hb1P",
+    "Eryn_Gutmann@hotmail.com": {
+      "id": "c49fd226-3485-4010-baf0-df48f6f75c7c",
+      "username": "Javon_Casper",
+      "email": "Eryn_Gutmann@hotmail.com",
+      "password": "ygOSKEecvI7xsYg",
       "age": 23,
       "role": {
-        "Admin": ["initiatives", "niches"],
-        "User": ["interfaces", "niches"]
+        "Admin": [
+          8,
+          0
+        ],
+        "User": [
+          0,
+          2
+        ]
       }
     },
-    "Destinee_Buckridge@yahoo.com": {
-      "id": "fe9a1fdf-3078-4223-a83f-f9daef1a8c2f",
-      "username": "Deion.Barrows",
-      "email": "Destinee_Buckridge@yahoo.com",
-      "password": "CmdJ2rGdopjISY1",
+    "Tony90@yahoo.com": {
+      "id": "89f1c7ce-e9b9-4085-9c50-cfa16234983d",
+      "username": "Gracie.Mraz",
+      "email": "Tony90@yahoo.com",
+      "password": "jvMnXKD5vfuwNpE",
       "age": 23,
       "role": {
-        "Admin": ["technologies", "interfaces"],
-        "User": ["interfaces", "supply-chains"]
+        "Admin": [
+          9,
+          1
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Antonette68@hotmail.com": {
-      "id": "1429b4fa-7d5d-49c0-89f2-8a71a74b5dc6",
-      "username": "Eleonore.Satterfield",
-      "email": "Antonette68@hotmail.com",
-      "password": "6uTJMJ7gwZcNEtB",
+    "Kacie.Swift@hotmail.com": {
+      "id": "502b66e9-eea0-4cf3-80c1-5669648c06fe",
+      "username": "Helene_Hettinger",
+      "email": "Kacie.Swift@hotmail.com",
+      "password": "CBkKciB9UGVgXia",
       "age": 23,
       "role": {
-        "Admin": ["relationships", "interfaces"],
-        "User": ["interfaces", "networks"]
+        "Admin": [
+          6,
+          0
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Earline13@yahoo.com": {
-      "id": "549d9cef-a980-4338-8947-a64de01f2c62",
-      "username": "Barbara.Waelchi",
-      "email": "Earline13@yahoo.com",
-      "password": "kaCLnyiraymYv9U",
+    "Wilford_Mueller3@yahoo.com": {
+      "id": "62dfaa82-5c8c-4b25-abe8-24aea36c087b",
+      "username": "Linnie84",
+      "email": "Wilford_Mueller3@yahoo.com",
+      "password": "WDc9LfaTxMvYir8",
       "age": 23,
       "role": {
-        "Admin": ["initiatives", "niches"],
-        "User": ["interfaces", "technologies"]
+        "Admin": [
+          8,
+          1
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Evalyn.Baumbach@yahoo.com": {
-      "id": "e26a6828-d332-4a97-ad88-602eab341ca2",
-      "username": "Olaf_Jacobson",
-      "email": "Evalyn.Baumbach@yahoo.com",
-      "password": "EOyvfP2Idq1PQID",
+    "Donna.Hegmann@hotmail.com": {
+      "id": "de895133-ffc9-4dab-8b0e-0ca668e66069",
+      "username": "Gerardo.Schuster53",
+      "email": "Donna.Hegmann@hotmail.com",
+      "password": "fmHiuenSz1NATZA",
       "age": 23,
       "role": {
-        "Admin": ["interfaces", "niches"],
-        "User": ["interfaces", "supply-chains"]
+        "Admin": [
+          5,
+          1
+        ],
+        "User": [
+          0,
+          2
+        ]
       }
     },
-    "Antoinette78@gmail.com": {
-      "id": "b0fe7d3f-e9fb-42ae-ada5-a4ce0932fbda",
-      "username": "Regan36",
-      "email": "Antoinette78@gmail.com",
-      "password": "ujSBnDrg2zkwPPp",
+    "Ivah_Tremblay@hotmail.com": {
+      "id": "1078c8c2-19f1-43c4-876c-7bbc081de2ac",
+      "username": "Nannie_Medhurst",
+      "email": "Ivah_Tremblay@hotmail.com",
+      "password": "II4HlWOJzaO1O8v",
       "age": 23,
       "role": {
-        "Admin": ["initiatives", "interfaces"],
-        "User": ["interfaces", "supply-chains"]
+        "Admin": [
+          7,
+          0
+        ],
+        "User": [
+          0,
+          0
+        ]
       }
     },
-    "Margret_Mann5@gmail.com": {
-      "id": "cdfc285c-26b2-4f79-aaf3-234fc7f5c31c",
-      "username": "Xavier16",
-      "email": "Margret_Mann5@gmail.com",
-      "password": "FdDk6FFPzANhbnA",
+    "Gia.Gutmann26@yahoo.com": {
+      "id": "dc2bb0dc-465a-4362-92d1-4191535659a7",
+      "username": "Connor.Graham",
+      "email": "Gia.Gutmann26@yahoo.com",
+      "password": "aUe4AkizNzro_My",
       "age": 23,
       "role": {
-        "Admin": ["supply-chains", "interfaces"],
-        "User": ["interfaces", "eyeballs"]
+        "Admin": [
+          6,
+          0
+        ],
+        "User": [
+          0,
+          0
+        ]
       }
     },
-    "Shyann28@hotmail.com": {
-      "id": "d7314235-8597-4dae-aebc-fa4155c26448",
-      "username": "Juvenal93",
-      "email": "Shyann28@hotmail.com",
-      "password": "YGLOKGr6tMsZZ5D",
+    "Leopold.Glover@yahoo.com": {
+      "id": "4d4b2295-329e-4f3c-b33c-90ebe3ab42b1",
+      "username": "Shany.Lakin",
+      "email": "Leopold.Glover@yahoo.com",
+      "password": "GCFXgcacdEVPWyb",
       "age": 23,
       "role": {
-        "Admin": ["eyeballs", "niches"],
-        "User": ["interfaces", "eyeballs"]
+        "Admin": [
+          0,
+          1
+        ],
+        "User": [
+          0,
+          5
+        ]
       }
     },
-    "Constantin59@hotmail.com": {
-      "id": "8321ce54-8972-490b-8bf0-117991cb78c4",
-      "username": "Sadye54",
-      "email": "Constantin59@hotmail.com",
+    "Clementine_Boyer@gmail.com": {
+      "id": "56f875cb-0aaa-4503-8d80-92a6fab73776",
+      "username": "Dahlia.Orn",
+      "email": "Clementine_Boyer@gmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["technologies", "niches"],
-        "User": ["interfaces", "initiatives"]
+        "Admin": [
+          0,
+          7
+        ],
+        "User": [
+          0,
+          4
+        ]
       }
     },
-    "Fermin.Altenwerth@gmail.com": {
-      "id": "637e6eda-a6fd-43f3-bb6e-1af53deb4d50",
-      "username": "Freeda_McDermott",
-      "email": "Fermin.Altenwerth@gmail.com",
+    "Tyrese.Gulgowski1@yahoo.com": {
+      "id": "ca8ce639-89c0-4961-a5d6-d9b73e3e9b7d",
+      "username": "Maia_Cruickshank36",
+      "email": "Tyrese.Gulgowski1@yahoo.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["supply-chains", "supply-chains"],
-        "User": ["supply-chains", "niches"]
+        "Admin": [
+          2,
+          2
+        ],
+        "User": [
+          0,
+          3
+        ]
       }
     },
-    "Mable.Kunze@hotmail.com": {
-      "id": "d5363034-47c6-406f-af90-e29f9d239cc2",
-      "username": "Rodrigo.Mitchell",
-      "email": "Mable.Kunze@hotmail.com",
+    "Hertha_Bergstrom54@gmail.com": {
+      "id": "91111185-dd52-46f0-8732-986b6c27407b",
+      "username": "Kennedy37",
+      "email": "Hertha_Bergstrom54@gmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["supply-chains", "initiatives"],
-        "User": ["interfaces", "initiatives"]
+        "Admin": [
+          1,
+          1
+        ],
+        "User": [
+          1,
+          0
+        ]
       }
     },
-    "Peyton3@gmail.com": {
-      "id": "bb6151d8-9d5a-4f90-abbf-7b60e2a5200e",
-      "username": "Gregorio41",
-      "email": "Peyton3@gmail.com",
+    "Nayeli_Legros@gmail.com": {
+      "id": "c1203b52-45e7-43a6-946d-5d3d0bb49ca3",
+      "username": "Tyshawn.Goodwin",
+      "email": "Nayeli_Legros@gmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["interfaces", "eyeballs"],
-        "User": ["interfaces", "niches"]
+        "Admin": [
+          1,
+          4
+        ],
+        "User": [
+          2,
+          6
+        ]
       }
     },
-    "Bud.MacGyver@hotmail.com": {
-      "id": "d23a0712-f4e8-4244-8ffe-1beab614b87e",
-      "username": "Sabrina_Koepp24",
-      "email": "Bud.MacGyver@hotmail.com",
+    "Savion38@hotmail.com": {
+      "id": "cca03131-527b-4501-8018-442c38faf7c1",
+      "username": "Janessa82",
+      "email": "Savion38@hotmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["supply-chains", "niches"],
-        "User": ["niches", "supply-chains"]
+        "Admin": [
+          1,
+          0
+        ],
+        "User": [
+          1,
+          3
+        ]
       }
     },
-    "Edna16@yahoo.com": {
-      "id": "8e77f9a1-1252-4043-89b1-2f16f4d65bac",
-      "username": "Ryann_Larkin",
-      "email": "Edna16@yahoo.com",
+    "Ray_Yundt25@hotmail.com": {
+      "id": "f78e0ee4-8690-409e-98f2-be82c54ead68",
+      "username": "Davon99",
+      "email": "Ray_Yundt25@hotmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["supply-chains", "infomediaries"],
-        "User": ["supply-chains", "eyeballs"]
+        "Admin": [
+          0,
+          1
+        ],
+        "User": [
+          3,
+          1
+        ]
       }
     },
-    "Ahmed.Klocko@hotmail.com": {
-      "id": "6420ea1f-aeae-420d-9607-b05e600921d9",
-      "username": "Abbie.Russel93",
-      "email": "Ahmed.Klocko@hotmail.com",
+    "Mozelle.Graham@hotmail.com": {
+      "id": "f7a9625a-89c3-44f1-9efd-bb7d4f4a3a53",
+      "username": "Jazmyne.Conn76",
+      "email": "Mozelle.Graham@hotmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["eyeballs", "networks"],
-        "User": ["niches", "niches"]
+        "Admin": [
+          0,
+          6
+        ],
+        "User": [
+          3,
+          1
+        ]
       }
     },
-    "Elliot.King88@gmail.com": {
-      "id": "559634ff-3cc7-485f-8fd1-1dcd8414ba43",
-      "username": "Alexandre.Bergnaum36",
-      "email": "Elliot.King88@gmail.com",
+    "Kasandra_Davis@gmail.com": {
+      "id": "f74c0833-07d0-41d5-b9a6-e126e5065e7e",
+      "username": "Obie3",
+      "email": "Kasandra_Davis@gmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["technologies", "eyeballs"],
-        "User": ["niches", "networks"]
+        "Admin": [
+          2,
+          5
+        ],
+        "User": [
+          1,
+          2
+        ]
       }
     },
-    "Jerome_Willms31@yahoo.com": {
-      "id": "f2094a17-7a91-4120-87f2-0914e7e14f40",
-      "username": "Yazmin_Batz92",
-      "email": "Jerome_Willms31@yahoo.com",
+    "Evangeline78@hotmail.com": {
+      "id": "9407be8b-df9e-48ab-9242-7998ed3c7f83",
+      "username": "Jeanne33",
+      "email": "Evangeline78@hotmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["technologies", "interfaces"],
-        "User": ["supply-chains", "networks"]
+        "Admin": [
+          3,
+          1
+        ],
+        "User": [
+          3,
+          3
+        ]
       }
     },
-    "Asia_Boehm@yahoo.com": {
-      "id": "43e01db9-957a-438a-9e6c-78c3ce4fbc78",
-      "username": "Colleen_Harber26",
-      "email": "Asia_Boehm@yahoo.com",
+    "Malachi.Flatley@gmail.com": {
+      "id": "61bf4aa5-3182-45f5-acd7-01e377a126f7",
+      "username": "Kaley5",
+      "email": "Malachi.Flatley@gmail.com",
       "password": "admin123",
       "age": 25,
       "role": {
-        "Admin": ["technologies", "initiatives"],
-        "User": ["niches", "initiatives"]
+        "Admin": [
+          0,
+          7
+        ],
+        "User": [
+          0,
+          6
+        ]
       }
     }
   },
-  "teams": [
-    "interfaces",
-    "niches",
-    "eyeballs",
-    "supply-chains",
-    "technologies",
-    "networks",
-    "initiatives",
-    "infomediaries",
-    "relationships",
-    "networks"
-  ]
+  "teams": {
+    "0": {
+      "id": 0,
+      "teamName": "Music",
+      "color": "Turquoise"
+    },
+    "1": {
+      "id": 1,
+      "teamName": "Sports",
+      "color": "Turquoise"
+    },
+    "2": {
+      "id": 2,
+      "teamName": "Automotive",
+      "color": "Turquoise"
+    },
+    "3": {
+      "id": 3,
+      "teamName": "Grocery",
+      "color": "Turquoise"
+    },
+    "4": {
+      "id": 4,
+      "teamName": "Books",
+      "color": "Turquoise"
+    },
+    "5": {
+      "id": 5,
+      "teamName": "Books",
+      "color": "Turquoise"
+    },
+    "6": {
+      "id": 6,
+      "teamName": "Outdoors",
+      "color": "Turquoise"
+    },
+    "7": {
+      "id": 7,
+      "teamName": "Games",
+      "color": "Turquoise"
+    },
+    "8": {
+      "id": 8,
+      "teamName": "Home",
+      "color": "Turquoise"
+    },
+    "9": {
+      "id": 9,
+      "teamName": "Games",
+      "color": "Turquoise"
+    }
+  },
+  "events": {
+    "bab61fd4-2992-419c-a7a9-30a5f4647623": {
+      "id": "bab61fd4-2992-419c-a7a9-30a5f4647623",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Automotive",
+      "start": "2020-07-01T04:41:38.054Z",
+      "end": "2020-07-01T04:41:38.054Z",
+      "color": "Pomegranate"
+    },
+    "d67f3b9f-9710-429a-8519-3dab57183253": {
+      "id": "d67f3b9f-9710-429a-8519-3dab57183253",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Home",
+      "start": "2020-06-03T11:27:58.568Z",
+      "end": "2020-06-03T11:27:58.568Z",
+      "color": "Wisteria"
+    },
+    "8f602a3a-8995-4c9a-84e0-09cb54d17b97": {
+      "id": "8f602a3a-8995-4c9a-84e0-09cb54d17b97",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Games",
+      "start": "2020-02-04T19:22:29.817Z",
+      "end": "2020-02-04T19:22:29.817Z",
+      "color": "Sun Flower"
+    },
+    "a7885114-035d-4eeb-b23e-65cb377fd235": {
+      "id": "a7885114-035d-4eeb-b23e-65cb377fd235",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Music",
+      "start": "2020-02-12T22:06:48.952Z",
+      "end": "2020-02-12T22:06:48.952Z",
+      "color": "Orange"
+    },
+    "18f0fe26-960b-478d-a2c0-0bb4f2b57151": {
+      "id": "18f0fe26-960b-478d-a2c0-0bb4f2b57151",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Sports",
+      "start": "2019-12-22T23:05:02.978Z",
+      "end": "2019-12-22T23:05:02.978Z",
+      "color": "Turquoise"
+    },
+    "22d31e99-cb51-4f3f-b261-519b2ed191eb": {
+      "id": "22d31e99-cb51-4f3f-b261-519b2ed191eb",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Sports",
+      "start": "2019-11-08T09:35:53.967Z",
+      "end": "2019-11-08T09:35:53.967Z",
+      "color": "Orange"
+    },
+    "55ffcbf6-e72b-4fbf-b657-ee39af216561": {
+      "id": "55ffcbf6-e72b-4fbf-b657-ee39af216561",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Sports",
+      "start": "2019-10-03T00:03:41.195Z",
+      "end": "2019-10-03T00:03:41.195Z",
+      "color": "Midnight Blue"
+    },
+    "84aaf609-4d0f-4627-936f-c4a58609b8a9": {
+      "id": "84aaf609-4d0f-4627-936f-c4a58609b8a9",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Sports",
+      "start": "2020-07-17T23:07:24.758Z",
+      "end": "2020-07-17T23:07:24.758Z",
+      "color": "Pomegranate"
+    },
+    "792211f3-cba9-448c-a0e0-2d9149c7e072": {
+      "id": "792211f3-cba9-448c-a0e0-2d9149c7e072",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Outdoors",
+      "start": "2019-12-22T22:57:51.890Z",
+      "end": "2019-12-22T22:57:51.890Z",
+      "color": "Pumpkin"
+    },
+    "c16cbbfb-c25a-45ef-b9d9-0a21d76f9911": {
+      "id": "c16cbbfb-c25a-45ef-b9d9-0a21d76f9911",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Home",
+      "start": "2020-03-19T19:11:08.535Z",
+      "end": "2020-03-19T19:11:08.535Z",
+      "color": "Pomegranate"
+    },
+    "656a7f9f-a513-4599-a00a-39a3c30cf040": {
+      "id": "656a7f9f-a513-4599-a00a-39a3c30cf040",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Home",
+      "start": "2020-07-02T20:22:45.978Z",
+      "end": "2020-07-02T20:22:45.978Z",
+      "color": "Concrete"
+    },
+    "b3f902ef-22c7-40fd-a4e2-f9ea7af7c9cd": {
+      "id": "b3f902ef-22c7-40fd-a4e2-f9ea7af7c9cd",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Music",
+      "start": "2019-12-24T09:57:14.598Z",
+      "end": "2019-12-24T09:57:14.598Z",
+      "color": "Orange"
+    },
+    "1139961d-0b51-49f5-86e0-06dfad7ce9ef": {
+      "id": "1139961d-0b51-49f5-86e0-06dfad7ce9ef",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Books",
+      "start": "2019-09-25T16:14:58.833Z",
+      "end": "2019-09-25T16:14:58.833Z",
+      "color": "Wisteria"
+    },
+    "b36da2f3-3374-4d7b-a56e-bff31968dd25": {
+      "id": "b36da2f3-3374-4d7b-a56e-bff31968dd25",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Books",
+      "start": "2020-07-18T20:19:52.467Z",
+      "end": "2020-07-18T20:19:52.467Z",
+      "color": "Turquoise"
+    },
+    "8a0083ad-73ba-4930-8b22-9d8ca868536c": {
+      "id": "8a0083ad-73ba-4930-8b22-9d8ca868536c",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Grocery",
+      "start": "2020-06-19T19:42:15.043Z",
+      "end": "2020-06-19T19:42:15.043Z",
+      "color": "Pomegranate"
+    },
+    "96554528-a557-4c58-8832-a3efe6251de3": {
+      "id": "96554528-a557-4c58-8832-a3efe6251de3",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Automotive",
+      "start": "2020-08-26T15:57:12.913Z",
+      "end": "2020-08-26T15:57:12.913Z",
+      "color": "Turquoise"
+    },
+    "3f01b30b-5f20-49d2-9fc9-4f7aa6244a67": {
+      "id": "3f01b30b-5f20-49d2-9fc9-4f7aa6244a67",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Sports",
+      "start": "2019-09-10T01:27:18.420Z",
+      "end": "2019-09-10T01:27:18.420Z",
+      "color": "Turquoise"
+    },
+    "f764b684-0fe9-404c-ab8a-9b66c3d16568": {
+      "id": "f764b684-0fe9-404c-ab8a-9b66c3d16568",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Books",
+      "start": "2019-11-03T10:10:46.867Z",
+      "end": "2019-11-03T10:10:46.867Z",
+      "color": "Orange"
+    },
+    "61ebf62a-ea4d-4139-9ebd-80d6c6b0f55e": {
+      "id": "61ebf62a-ea4d-4139-9ebd-80d6c6b0f55e",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Games",
+      "start": "2019-09-08T01:25:56.647Z",
+      "end": "2019-09-08T01:25:56.647Z",
+      "color": "Pomegranate"
+    },
+    "2c7e3d48-2a5c-46ba-bc9a-95d3c1b3259b": {
+      "id": "2c7e3d48-2a5c-46ba-bc9a-95d3c1b3259b",
+      "title": "Meeting",
+      "allDay": true,
+      "team": "Automotive",
+      "start": "2020-07-14T15:52:48.755Z",
+      "end": "2020-07-14T15:52:48.755Z",
+      "color": "Pumpkin"
+    }
+  }
 }

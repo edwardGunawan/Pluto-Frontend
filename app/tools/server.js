@@ -4,6 +4,7 @@ const server = jsonServer.create();
 const db = JSON.parse(fs.readFileSync('./db.json', 'UTF-8'));
 const router = jsonServer.router('db.json');
 const jwt = require('jsonwebtoken');
+const events = require('./events');
 // Can pass a limited number of options to this to override (some) defaults
 const middlewares = jsonServer.defaults();
 
@@ -14,6 +15,9 @@ server.use(jsonServer.bodyParser);
 
 const SECRET_KEY = '123456789';
 const expiresIn = '1h';
+
+/// Fake in-memory events
+let inMemoryEvents = {...events};
 
 
 
@@ -68,8 +72,20 @@ server.post('/logout', (req,res) => {
 
 server.get('/users', (req,res) => {
     console.log(req.headers);
-    const { members } = db;
-    res.status(200).json(members[Object.keys(members)[0]]);
+    const { members, teams } = db;
+    const {role } = members[Object.keys(members)[0]];
+    const {Admin, User} = role;
+    const newRole = {
+        Admin: Admin.map(teamId => teams[teamId].teamName),
+        User: User.map(teamId => teams[teamId].teamName),
+    }
+
+    const user = {
+        ...members[Object.keys(members)[0]],
+        role: newRole,
+    }
+    
+    res.status(200).json(user);
 })
 
 
@@ -89,21 +105,58 @@ server.post('/register', (req,res) => {
 
 // get all the users corresponding to the team, either admin, or user
 server.get('/teams/:teamName', (req,res,next) => {
-    const {members} = db;
+    const {members, teams} = db;
     const {teamName} = req.params;
+    let teamId = null;
+    Object.values(teams).forEach((val) => {
+        if(teamName === val.teamName) {
+            teamId = val.id;
+        }
+    })
     let users = [];
     Object.values(members).forEach(val => {
         const {role, username} = val;
         const {Admin={}, User={}} = role;
         
-        if(Admin.indexOf(teamName) > 0  || User.indexOf(teamName) > 0) {
+        if(Admin.indexOf(teamId) > 0  || User.indexOf(teamId) > 0) {
             users = [...users, username];
         }
     });
 
-    res.status(200).json({teamName,users});
+    res.status(200).json({...teams[teamId] ,users});
 });
 
+
+/**
+ * Getting Events
+ */
+// get user events
+server.get('/events/:username',(req,res) => {
+    res.status(200).json(inMemoryEvents);
+})
+
+
+server.post('/events/:username', (req,res) => {
+    const {id} = req.body;
+    console.log(id);
+    inMemoryEvents = {
+        ...inMemoryEvents,
+        [id]: req.body,
+    }
+    res.status(201).send();
+});
+
+server.put('/events/:username/:id', (req, res) => {
+    
+    console.log(req.body);
+    const {id} = req.params;
+    console.log('inMemorty events', inMemoryEvents);
+    inMemoryEvents = {
+        ...inMemoryEvents,
+        [id]: req.body,
+    }
+    res.status(204).send();
+})
 
 
 server.use(router);
