@@ -17,7 +17,6 @@ export default function eventsReducer(state=initialState.events, action) {
             }
         case UPDATE_EVENTS_SUCCESS:   
         const {event} = action;
-        console.log('go through the create events success', event);
             return {
                 event: {
                     ...state.event,

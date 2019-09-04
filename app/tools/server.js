@@ -147,7 +147,6 @@ server.post('/events/:username', (req,res) => {
 });
 
 server.put('/events/:username/:id', (req, res) => {
-    
     console.log(req.body);
     const {id} = req.params;
     console.log('inMemorty events', inMemoryEvents);
