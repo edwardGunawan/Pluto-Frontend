@@ -20,7 +20,6 @@ export default function teamReducer(state=initialState.teams, action) {
             }
         case POPULATE_TEAM_NAME:
             const {teamsObj} = action;
-            console.log(teamsObj);
             return {
                 ...state,
                 ...teamsObj,

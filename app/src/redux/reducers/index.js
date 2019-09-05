@@ -22,7 +22,6 @@ export const rootEpic = combineEpics(
     getUserInfoEpic,
     fetchTeamEpic,
     fetchEventsEpic,
-    // createEventsEpic,
     updateEventsEpic,
     deleteEventsEpic
     ); 

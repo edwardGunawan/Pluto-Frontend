@@ -20,7 +20,7 @@ export const populateTeamName = (teams) => {
     const teamsObj = teams.reduce((acc,currVal) => {
         return {
             ...acc,
-            [currVal] : {color: '#2ecc71', users: null}
+            [currVal] : { users: null }
         }
     },{});
 
