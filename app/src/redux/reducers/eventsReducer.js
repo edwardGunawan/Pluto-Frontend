@@ -1,11 +1,11 @@
 import { FETCH_EVENTS_SUCCESS, 
         FETCH_EVENTS_ERROR, 
-        CREATE_EVENTS_ERROR,
-        CREATE_EVENTS_SUCCESS, 
         UPDATE_EVENTS_ERROR, 
         UPDATE_EVENTS_SUCCESS,
-        CREATE_EVENTS,
-        UPDATE_EVENTS } from '../actions/eventsAction';
+        DELETE_EVENTS,
+        DELETE_EVENTS_SUCCESS,
+        DELETE_EVENTS_ERROR
+        } from '../actions/eventsAction';
 import initialState from '../initialState';
 
 export default function eventsReducer(state=initialState.events, action) {
@@ -24,23 +24,38 @@ export default function eventsReducer(state=initialState.events, action) {
                 },
                 message: 'success',
             }
-        // case CREATE_EVENTS:
-        // case UPDATE_EVENTS:
-        //     const {id} = event;
-        //     return {
-        //         ...state,
-        //         event: {
-        //             ...state.event,
-        //             [id] : event,
-        //         }
-        //     }
+        case DELETE_EVENTS:
+            const {id} = action;
+            return {
+                ...state,
+                event: Object.keys(state.event).reduce((acc,eventId) => {
+                    if(eventId === id) {
+                        return acc;
+                    }
+                    return Object.assign({}, acc,{[eventId]: state.event[eventId]});;
+                },
+                {}),
+            }
+        case DELETE_EVENTS_SUCCESS:
+            return {
+                ...state,
+                message: 'Success',
+            }
         case FETCH_EVENTS_ERROR:
         case UPDATE_EVENTS_ERROR:
-        case CREATE_EVENTS_ERROR:
             const {message} = action;
             return {
                 ...state,
                 message,
+            }
+        case DELETE_EVENTS_ERROR:
+            const {originalValue} = action;
+            return {
+                message: action.message,
+                event: {
+                    ...state.event,
+                    [originalValue.id]: originalValue,
+                }
             }
         default:
             return state;

@@ -4,7 +4,7 @@ import { combineEpics } from 'redux-observable';
 import { submitRegistrationEpic } from '../actions/registerAction';
 import { loginEpic, logoutEpic, getUserInfoEpic } from '../actions/authenticationAction';
 import { fetchTeamEpic } from '../actions/teamAction';
-import { fetchEventsEpic, updateEventsEpic} from '../actions/eventsAction';
+import { fetchEventsEpic, updateEventsEpic, deleteEventsEpic} from '../actions/eventsAction';
 
 
 
@@ -24,6 +24,7 @@ export const rootEpic = combineEpics(
     fetchEventsEpic,
     // createEventsEpic,
     updateEventsEpic,
+    deleteEventsEpic
     ); 
 
 const rootReducers = combineReducers({

@@ -2,10 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import {Calendar, momentLocalizer, Views} from "react-big-calendar";
 import moment from 'moment';
-// import events from '../../../tools/events';
+
 import {connect} from 'react-redux';
 import {fetchUserInTeam, populateTeamName} from '../../redux/actions/teamAction';
-import { fetchUserEvents, updateEvent} from '../../redux/actions/eventsAction';
+import { fetchUserEvents, updateEvent, deleteEvents} from '../../redux/actions/eventsAction';
 import { getUserInfoWithAccessToken } from '../../redux/actions/authenticationAction';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import uuid from 'uuid';
@@ -15,6 +15,7 @@ import DropDown from 'react-bootstrap/Dropdown'
 import Modal from '../Common/Modal';
 import SelectInput from '../Common/SelectInput';
 import DropDownButton from 'react-bootstrap/DropdownButton';
+import colorSelection from '../util/ColorSelection';
 
 moment.locale('en');
 const localizer = momentLocalizer(moment);
@@ -22,7 +23,6 @@ const localizer = momentLocalizer(moment);
 class Home extends React.Component {
     state = {
         view: 'day',
-        events: [],
         show: false,
         selected: {
             team: 'Select',
@@ -31,7 +31,6 @@ class Home extends React.Component {
         },
         slotInfo: null,
         modalTitle: null,
-        onEdit: false,
     }
 
     baseState = this.state;
@@ -63,48 +62,38 @@ class Home extends React.Component {
         this.setState({...this.baseState, events});
     }
 
-    handleSelectEvent = (eventInfo) => {
-        console.log(eventInfo);
-        const {title, team, id, color} = eventInfo;
+    handleSelectEvent = (modalTitle) => (eventInfo) => {
+        const {title='Select', team='Select', id=null, color='Turquoise'} = eventInfo;
         this.setState({
             show: true,
-            selected: {
-                team,
-                user: title,
-                color,
-                id,
-            },
+            selected: { team, user: title, color, id },
             slotInfo: eventInfo,
-            modalTitle: 'Edit Event',
+            modalTitle,
         });
       }
-    
-    handleSlot = (slotInfo) => {
-        this.setState({show:true, slotInfo, modalTitle:'Create New Event'});
-    }
+
 
     handleClose = () => {
-        const {modalTitle, events ,selected} = this.state;
+        const {modalTitle ,selected} = this.state;
         const {id} = selected;
         this.resetModalForm();
 
         if(modalTitle === 'Edit Event') {
-            console.log('going through modalTitle', modalTitle)
-            this.setState({
-                events : events.filter((e) => e.id !== id),
-            });    
+            const {deleteEvents, events} = this.props;
+            let eventToBeDeleted = null;
+            events.forEach((e) => {
+                if(e.id === id) eventToBeDeleted = e;
+            })
+            deleteEvents(id, eventToBeDeleted);
         }
-            
-
-        
     }
     
     handleSelectionChange = (event) => {
         const {name, value} = event.target;
         const { fetchUserInTeam, teams } = this.props;
-        console.log(name, value);
+        // console.log(name, value);
         // console.log('teams in handleselection change', teams);
-        console.log(teams[value]);
+        // console.log(teams[value]);
         // only fetch from server if the teams is null, and it is a team
         if(name === 'team' && !teams[value].users) fetchUserInTeam(value);
         const selected = {
@@ -115,65 +104,37 @@ class Home extends React.Component {
         this.setState({selected});
     }
 
-
+    handleEventPropGetter = (e) => {
+        console.log(e);
+        const idx = _.findIndex(colorSelection, ({name}) => e.color === name);
+        const {backgroundColor} = colorSelection[idx].style;
+        return {
+            style:{
+                background: backgroundColor,
+            }
+        }
+    }
 
     handleSubmit = (event) => {
-        event.preventDefault();
-        
+        event.preventDefault();  
         const {slotInfo, selected} = this.state;
-        const { events, updateEvent, username } = this.props;
-        const {start, end, id} = slotInfo;
+        const { events, updateEvent } = this.props;
+        const {start, end} = slotInfo;
         const {user,team, color} = selected;
         console.log(color);
 
-
         if(user === 'Select' || team === 'Select') return;
         
-        console.log(slotInfo);
+        // console.log('slot info', slotInfo);
         // check if eventInfo exist
-        // const index = _.findIndex(events, (e) => {
-        //     console.log(e.id);
-        //     return e.id === slotInfo.id
-        // });
-
-
-        // let newEvents =[...events]
-
+        const index = _.findIndex(events, (e) => e.id === slotInfo.id);
         
         this.resetModalForm();
-
-        console.log('index in home.js for submit button', id);
         updateEvent({
             title: user,
-            id: events.hasOwnProperty(id) ? uuid.v4() : id,
-            team,
-            color,
-            start,
-            end,
+            id: index > -1 ? events[index].id: uuid.v4(),
+            team, color, start, end,
         })
-        // if( index === -1) {
-            
-            // newEvents.push({
-            //     title: user,
-            //     id: uuid.v4(),
-            //     team,
-            //     color,
-            //     start,
-            //     end,
-            // });
-        // } 
-
-        // newEvents[index] = {
-        //     ...slotInfo,
-        //     title: user,
-        //     team,
-        //     color, 
-        // }
-        
-
-        // this.setState({
-        //     events: newEvents
-        // });
     }
       
 
@@ -181,54 +142,17 @@ class Home extends React.Component {
         const {show, selected, modalTitle} = this.state;
         const {team, user,color} = selected;
         const {events,teamSelection, teams} = this.props;
-        console.log(teamSelection, ' selected ', selected);
 
-        const colorSelection = [
-            {
-                style: {backgroundColor: '#1abc9c'}, 
-                name: 'Turquoise'
-            },
-            {
-                style: {backgroundColor: '#8e44ad'},
-                name: 'Wisteria',
-            }, 
-            {
-                style: {backgroundColor: '#d35400'},
-                name: 'Pumpkin',
-            }, 
-            {
-                style:{backgroundColor: '#f1c40f'},
-                name: 'Sun Flower',
-            },
-            {
-                style:{backgroundColor: '#c0392b'},
-                name: 'Pomegranate',
-            },
-            {
-                style:{backgroundColor: '#7f8c8d'},
-                name: 'Midnight Blue',
-            },
-            {
-                style:{backgroundColor: '#f39c12'},
-                name: 'Orange',
-            },
-            {
-                style:{backgroundColor: '#95a5a6'},
-                name: 'Concrete'
-            }
-             
-            
-            
-            
-        ];
-        
         
         return (
             <>
             <Modal modalTitle={modalTitle} onClose={this.handleClose} show={show} onSubmit={this.handleSubmit} >
                 <DropDownButton title={color} >
                         {colorSelection.map((selection) => {
-                            return <DropDown.Item key={uuid.v4()} eventKey={selection.name} onSelect={(eventKey) => this.setState({selected: {...this.state.selected, color: eventKey}})} style={{...selection.style, height:'30px'}}>{selection.name}</DropDown.Item>
+                            return <DropDown.Item key={uuid.v4()} 
+                            eventKey={selection.name} 
+                            onSelect={(eventKey) => this.setState({selected: {...this.state.selected, color: eventKey}})} 
+                            style={{...selection.style, height:'30px'}}>{selection.name} </DropDown.Item>
                         })}
                 </DropDownButton>
                 <SelectInput label={'Team'} name={'team'} selections={teamSelection} handleChange={this.handleSelectionChange} value={team}/>
@@ -247,17 +171,9 @@ class Home extends React.Component {
                 events={events}
                 views={[Views.MONTH, Views.WEEK, Views.DAY]}
                 defaultView={Views.MONTH}
-                onSelectEvent={this.handleSelectEvent}
-                onSelectSlot={this.handleSlot}
-                eventPropGetter={(e) => {
-                    const idx = _.findIndex(colorSelection, ({name}) => e.color === name);
-                    const {backgroundColor} = colorSelection[idx].style;
-                    return {
-                        style:{
-                            background: backgroundColor,
-                        }
-                    }
-                }}
+                onSelectEvent={this.handleSelectEvent('Edit Event')}
+                onSelectSlot={this.handleSelectEvent('Create New Event')}
+                eventPropGetter={this.handleEventPropGetter}
                 />
             </>
         )
@@ -266,12 +182,6 @@ class Home extends React.Component {
 
 const mapStateToProps = ({user, teams = {}, events}) => {
     const {role, username} = user;
-    console.log('teams in mapstateToprops', teams);
-    
-    console.log(user, teams, 'events ', events);
-    
-    
-    console.log(_.isEmpty(events));
     const {Admin = []} = role;
 
     return {
@@ -288,6 +198,7 @@ const mapDispatchToProps = {
     populateTeamName,
     fetchUserEvents,
     updateEvent,
+    deleteEvents,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

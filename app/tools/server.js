@@ -128,7 +128,7 @@ server.get('/teams/:teamName', (req,res,next) => {
 
 
 /**
- * Getting Events
+ * Events
  */
 // get user events
 server.get('/events/:username',(req,res) => {
@@ -154,6 +154,21 @@ server.put('/events/:username/:id', (req, res) => {
         ...inMemoryEvents,
         [id]: req.body,
     }
+    res.status(204).send();
+});
+
+server.delete('/events/:username/:id', (req,res) => {
+    const {id} = req.params;
+    inMemoryEvents = Object.keys(inMemoryEvents).reduce(
+        (acc, eventId) => {
+            if(eventId === id) return acc;
+            return {
+                ...acc,
+                [eventId]: inMemoryEvents[eventId],
+            }
+        },
+        {}
+    );
     res.status(204).send();
 })
 
