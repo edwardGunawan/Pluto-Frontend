@@ -2,7 +2,8 @@ import { FETCH_EVENTS_SUCCESS,
         FETCH_EVENTS_ERROR, 
         UPDATE_EVENTS_ERROR, 
         UPDATE_EVENTS_SUCCESS,
-        DELETE_EVENTS,
+        CREATE_EVENTS_SUCCESS,
+        CREATE_EVENTS_ERROR,
         DELETE_EVENTS_SUCCESS,
         DELETE_EVENTS_ERROR
         } from '../actions/eventsAction';
@@ -15,7 +16,8 @@ export default function eventsReducer(state=initialState.events, action) {
                 message: 'success',
                 event: action.events,
             }
-        case UPDATE_EVENTS_SUCCESS:   
+        case UPDATE_EVENTS_SUCCESS:
+        case CREATE_EVENTS_SUCCESS:   
         const {event} = action;
             return {
                 event: {
@@ -24,10 +26,11 @@ export default function eventsReducer(state=initialState.events, action) {
                 },
                 message: 'success',
             }
-        case DELETE_EVENTS:
+        case DELETE_EVENTS_SUCCESS:
             const {id} = action;
             return {
                 ...state,
+                message: 'Success',
                 event: Object.keys(state.event).reduce((acc,eventId) => {
                     if(eventId === id) {
                         return acc;
@@ -36,13 +39,9 @@ export default function eventsReducer(state=initialState.events, action) {
                 },
                 {}),
             }
-        case DELETE_EVENTS_SUCCESS:
-            return {
-                ...state,
-                message: 'Success',
-            }
         case FETCH_EVENTS_ERROR:
         case UPDATE_EVENTS_ERROR:
+        case CREATE_EVENTS_ERROR:
             const {message} = action;
             return {
                 ...state,

@@ -84,6 +84,8 @@ server.get('/users', (req,res) => {
         ...members[Object.keys(members)[0]],
         role: newRole,
     }
+
+    console.log(user);
     
     res.status(200).json(user);
 })
@@ -174,7 +176,7 @@ server.delete('/events/:username/:id', (req,res) => {
 
 
 server.use(router);
-const port = 3001;
+const port = 8080;
 server.listen(
     port, 
     () => console.log(

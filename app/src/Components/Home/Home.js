@@ -6,7 +6,7 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 
 import {fetchUserInTeam, populateTeamName} from '../../redux/actions/teamAction';
-import { fetchUserEvents, updateEvent, deleteEvents} from '../../redux/actions/eventsAction';
+import { fetchUserEvents, updateEvent, deleteEvents, createEvent} from '../../redux/actions/eventsAction';
 import { getUserInfoWithAccessToken } from '../../redux/actions/authenticationAction';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import uuid from 'uuid';
@@ -14,6 +14,7 @@ import uuid from 'uuid';
 import Modal from '../Common/Modal';
 
 import DropDown from 'react-bootstrap/Dropdown'
+import Alert from 'react-bootstrap/Alert';
 import SelectInput from '../Common/SelectInput';
 import DropDownButton from 'react-bootstrap/DropdownButton';
 import colorSelection from '../util/ColorSelection';
@@ -29,7 +30,8 @@ const Home = ({
     updateEvent,
     teamSelection,
     deleteEvents,
-    populateTeamName,
+    createEvent,
+
 }) => {
 
     const [show, setShow] = useState(false);
@@ -42,10 +44,11 @@ const Home = ({
     useEffect(() => {
         if(!username) {
             const accessToken = localStorage.getItem('access_token');
-            getUserInfoWithAccessToken(accessToken);
-        } else {
-            populateTeamName(teamSelection);
-            fetchUserEvents(username);
+            getUserInfoWithAccessToken(accessToken).then((response) => {
+                return fetchUserEvents(username);
+            }).then(response => {
+                console.log('response');
+            }).catch(err => console.log(err));
         }
     },[ username ]);
 
@@ -59,6 +62,7 @@ const Home = ({
 
     const handleSelectEvent = (modalTitle) => (eventInfo) => {
         const {title='Select', team = 'Select', id=null, color='Turquoise'} = eventInfo;
+
         setShow(true);
         setSelected({ team, user: title, color, id });
         setSlotInfo(eventInfo);
@@ -90,10 +94,18 @@ const Home = ({
 
     const handleEventPropGetter = (e) => {
         const idx = _.findIndex(colorSelection, ({name}) => e.color === name);
-        const {backgroundColor} = colorSelection[idx].style;
+        const {title} = e;
+        let background = null;
+        Object.keys(teams).forEach(t => {
+            if(t === title) {
+                background = teams[t][color];
+            }
+        })
+
+        console.log(e.title, teams)
         return {
             style:{
-                background: backgroundColor,
+                background,
             }
         }
     }
@@ -102,21 +114,28 @@ const Home = ({
         event.preventDefault();  
  
         const {start, end} = slotInfo;
-        const {user,team, color} = selected;
+        const {user,team} = selected;
 
         if(user === 'Select' || team === 'Select') return;
-        // check if eventInfo exist
-        const index = _.findIndex(events, (e) => e.id === slotInfo.id);
+
         
         resetModalForm();
-        updateEvent({
-            title: user,
-            id: index > -1 ? events[index].id: uuid.v4(),
-            team, color, start, end,
-        })
+        if(modalTitle === 'Edit Event') {
+            updateEvent({
+                title: team,
+                id: _.findIndex(events.event, (e) => e.id === slotInfo.id),
+                user, start, end,
+            })
+        } else {
+            createEvent({
+                title: team,
+                user, start, end,
+            })
+        }
     }
       
     const {team, user,color} = selected;
+    const {message, event=[]} = events;
         
     return (
         <>
@@ -134,21 +153,22 @@ const Home = ({
                 <SelectInput label={'User'} name={'user'} selections={teams[team].users} handleChange={handleSelectionChange} value={user} />
             }
         </Modal>
-
-        <Calendar
+        {
+            message === 'success' ? <Calendar
             style={{"cursor": "pointer",height: 700, width: '80%', margin: 'auto'}}
             selectable
             popup
             localizer={localizer}
             startAccessor='start'
             endAccessor='end'
-            events={events}
+            events={event}
             views={[Views.MONTH, Views.WEEK, Views.DAY]}
             defaultView={Views.MONTH}
             onSelectEvent={handleSelectEvent('Edit Event')}
             onSelectSlot={handleSelectEvent('Create New Event')}
             eventPropGetter={handleEventPropGetter}
-            />
+            /> : <Alert variant='danger' >{message}</Alert>
+        }
         </>
     )
 }
@@ -172,11 +192,13 @@ const initialState = {
 const mapStateToProps = ({user, teams = {}, events}) => {
     const {role, username} = user;
     const {Admin = []} = role;
+    
+    console.log('teams', teams, events);
     return {
         teamSelection: Admin,
         username,
         teams,
-        events: (_.isEmpty(events))? [] : Object.values(events.event),
+        events,
     }
 }
 
@@ -187,6 +209,7 @@ const mapDispatchToProps = {
     fetchUserEvents,
     updateEvent,
     deleteEvents,
+    createEvent,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
