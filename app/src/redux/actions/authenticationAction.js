@@ -1,5 +1,5 @@
 
-import {populateTeamName} from './teamAction';
+import {fetchTeamBasedOnUser} from './teamAction';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
@@ -70,17 +70,18 @@ function logoutFailure(message) {
 export function getUserInfoWithAccessToken(token) {
     return async dispatch => {
         try {
-            const url = `http://localhost:8080/users`;
+            const url = `http://localhost:8080/api/v1/users/1`; // get 2 for now
             const response = await fetch(url, {
                 method: 'GET',
                 header: {
                     accessToken:`bearer-${token}`
                 }
             });
-            const jsonObj = await response.json();
-            console.log('response in getInfoWithAccessToken ', jsonObj);
-            dispatch(loginSuccess(jsonObj));
-            dispatch(populateTeamName(jsonObj.role.Admin))
+            const specificUser = await response.json();
+            console.log('response in getInfoWithAccessToken ', specificUser);
+            // insert login success
+            dispatch(loginSuccess(specificUser));
+            return specificUser;
         } catch(e) {
             dispatch(loginFailure(e.message))
         }

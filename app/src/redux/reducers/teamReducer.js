@@ -1,28 +1,53 @@
-import {FETCH_USER_ERROR,FETCH_USER_IN_TEAM_SUCCESS, POPULATE_TEAM_NAME} from '../actions/teamAction';
+import { 
+        //  FETCH_USER_ERROR,
+        //  FETCH_USER_IN_TEAM_SUCCESS, 
+        //  POPULATE_TEAM_NAME,
+         FETCH_TEAM_SUCCESS,
+         FETCH_TEAM_ERROR,
+         CREATE_TEAM_SUCCESS,
+         CREATE_TEAM_ERROR,
+         UDPATE_TEAM_SUCCESS,
+         UPDATE_TEAM_ERROR,
+         DELETE_TEAM_SUCCESS,
+         DELETE_TEAM_ERROR
+        } from '../actions/teamAction';
 import initialState from '../initialState';
 
 export default function teamReducer(state=initialState.teams, action) {
     switch(action.type) {
-        case FETCH_USER_IN_TEAM_SUCCESS:
-            const {users, teamName, id } = action;
-
+        
+        case FETCH_TEAM_SUCCESS:
             return {
-                ...state,
-                [teamName] : Object.assign({}, state[teamName], {
-                    id, users,
+                message: 'success',
+                team: action.team.map(t => t),
+            }
+        case UDPATE_TEAM_SUCCESS:
+            return {
+                message: 'success',
+                team: state.team.map(t => {
+                    if(t.id === state.team.id) {
+                        return state.team;
+                    }
+                    return t;
                 })
             }
-        case FETCH_USER_ERROR:
-            const {message} = action;
+        case CREATE_TEAM_SUCCESS:
             return {
-                ...state,
-                message,
+                message: 'success',
+                team: state.team.concat(action.team),
             }
-        case POPULATE_TEAM_NAME:
-            const {teamsObj} = action;
+        case DELETE_TEAM_SUCCESS:
+            return {
+                    message: 'success',
+                    team: state.team.filter(t => t.id !== action.teamId),
+                }
+        case FETCH_TEAM_ERROR:
+        case UPDATE_TEAM_ERROR:
+        case CREATE_TEAM_ERROR:
+        case DELETE_TEAM_ERROR:
             return {
                 ...state,
-                ...teamsObj,
+                message: action.message,
             }
         default:
             return state;

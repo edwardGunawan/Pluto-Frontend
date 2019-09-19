@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import uuid from 'uuid';
 
 const SelectInput = ({label, selections, handleChange, value, name}) => {
+    console.log(selections);
     return (
         <Form.Group>
             <Form.Label>{label}</Form.Label>

@@ -52,7 +52,7 @@ class Main extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.log('here in main', state.user);
     const { isAuthenticated, username } = state.user;
-    if(!isAuthenticated) ownProps.history.push('/login');
+    // if(!isAuthenticated) ownProps.history.push('/login');
     return {
       username,
     }
