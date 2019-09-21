@@ -22,14 +22,13 @@ export default function teamReducer(state=initialState.teams, action) {
                 team: action.team.map(t => t),
             }
         case UDPATE_TEAM_SUCCESS:
-            console.log(state);
             return {
                 message: 'success',
                 team: state.team.map(t => {
-                    if(t.id === state.team.id) {
-                        return t;
+                    if(t.id === action.team.id) { // this causes the error for mapping undefined, it changes the state
+                        return action.team;
                     }
-                    return state.team;
+                    return t;
                 })
             }
         case CREATE_TEAM_SUCCESS:
@@ -47,7 +46,6 @@ export default function teamReducer(state=initialState.teams, action) {
         case CREATE_TEAM_ERROR:
         case DELETE_TEAM_ERROR:
             return {
-                ...state,
                 message: action.message,
             }
         default:

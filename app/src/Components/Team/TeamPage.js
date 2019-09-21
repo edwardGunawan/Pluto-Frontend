@@ -14,15 +14,12 @@ class TeamPage extends React.Component {
 
     componentDidMount() {
         const {username,teams, getUserInfoWithAccessToken, fetchTeamBasedOnUser} = this.props;
-        console.log('triggered' ,teams);
         if(!username) {
             const accessToken = localStorage.getItem('access_token');
             getUserInfoWithAccessToken(accessToken).then((user) => {
                 return fetchTeamBasedOnUser(user.id);
             }).catch(err => alert(err));
-            console.log('go through component did mount');
         }
-        
     }
 
 
@@ -35,12 +32,12 @@ class TeamPage extends React.Component {
     render() {
         const {redirectToManageTeamPage} = this.state;
         const {teams} = this.props;
-        console.log('teams in teampage', teams.team);
+
         return (
             <>
                 {redirectToManageTeamPage && <Redirect to={'/team'} />}
                 <Button onClick={() => this.setState({redirectToManageTeamPage: true})}>Create Team</Button>
-                <TeamList teams={teams.team} handleDelete={this.handleDelete} />
+                <TeamList teams={teams} handleDelete={this.handleDelete} />
             </>
         )
     }
@@ -49,9 +46,9 @@ class TeamPage extends React.Component {
 
 const mapStateToProps = ({teams, user}) => {
     const {username} = user;
-    console.log('in team page', teams, username);
+    const team = teams && teams.team && teams.team.length > 0 && teams.team || [];
     return {
-        teams,
+        teams: team,
         username,
     }
 }

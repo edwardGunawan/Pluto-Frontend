@@ -17,11 +17,7 @@ const TeamForm = ({
     saving = false,
     handleDeleteClick,
 }) => {
-    if(!(team.hasOwnProperty('name') || team.hasOwnProperty('admins') || team.hasOwnProperty('users'))) {
-        team = newTeam;
-    }
-
-
+    
     return (
         <>
             <TextInput formLabel={'Team Name'} formType={'text'} handleChange={handleChange('name')} value={team.name} name={'name'} placeholder= {'Enter Team Name'} />

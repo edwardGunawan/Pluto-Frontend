@@ -24,7 +24,7 @@ export const POPULATE_TEAM_NAME = 'POPULATE_TEAM_NAME';
 export const fetchTeamBasedOnUser = (userId) => {
     return async dispatch => {
         try {
-            console.log('go through fetchBasedOnUser');
+            console.log('go through fetchBasedOnUser userId is ', userId);
             const URL = `http://localhost:8080/api/v1/teams?userId=${userId}`;
             const response = await fetch(URL);
             const json = await response.json();

@@ -1,12 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 import {Link} from 'react-router-dom';
 import uuid from 'uuid';
 import Button from 'react-bootstrap/Button';
 
-const TeamList = ({teams=[], handleDelete}) => {
-    console.log('in teamList', teams);
+const TeamList = ({teams, handleDelete}) => {
     return (
         <Table striped bordered hover variant="light">
             <thead>

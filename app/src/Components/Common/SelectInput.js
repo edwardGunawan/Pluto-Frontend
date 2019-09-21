@@ -4,7 +4,7 @@ import uuid from 'uuid';
 
 const SelectInput = ({label, selections, handleChange, value, name}) => {
     // console.log(selections);
-    console.log('value in selectInput', value, selections);
+    // console.log('value in selectInput', value, selections);
     return (
         <Form.Group>
             <Form.Label>{label}</Form.Label>
