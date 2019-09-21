@@ -70,7 +70,7 @@ function logoutFailure(message) {
 export function getUserInfoWithAccessToken(token) {
     return async dispatch => {
         try {
-            const url = `http://localhost:8080/api/v1/users/1`; // get 2 for now
+            const url = `http://localhost:8080/api/v1/users/3`; // get 2 for now
             const response = await fetch(url, {
                 method: 'GET',
                 header: {

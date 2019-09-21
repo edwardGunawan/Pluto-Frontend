@@ -28,6 +28,7 @@ export const fetchTeamBasedOnUser = (userId) => {
             const URL = `http://localhost:8080/api/v1/teams?userId=${userId}`;
             const response = await fetch(URL);
             const json = await response.json();
+            console.log('return json from fetchTeamBasedOnUser', json);
             dispatch(fetchTeamSuccess(json));
             return json;
         } catch(e) {
@@ -40,6 +41,8 @@ export const fetchTeamBasedOnUser = (userId) => {
 const fetchTeamSuccess = (team) => ({type: FETCH_TEAM_SUCCESS, team});
 const fetchTeamError = (message) => ({type: FETCH_TEAM_ERROR, message});
 
+
+
 /**
  * 
  * Create Team
@@ -48,16 +51,16 @@ export const createNewTeam = (team) => {
     return async dispatch => {
         try {
             const URL = `http://localhost:8080/api/v1/teams`;
+            console.log('about to fetch in teamAction ', team);
             const response = await fetch(URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: {
-                    team
-                }
+                body: JSON.stringify(team)
             });
             const newTeam = await response.json();
+            console.log('end result team ', newTeam);
             dispatch(createTeamSuccess(newTeam));
         } catch(e) {
             console.error(e);
@@ -79,9 +82,10 @@ export const updateTeam = (id,team) => {
             const URL = `http://localhost:8080/api/v1/teams/${id}`
             const response = await fetch(URL, {
                 method: 'PUT',
-                body: {
-                    team,
-                }
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(team)
             });
             const json = await response.json();
             dispatch(updateTeamSuccess(json));
@@ -107,7 +111,8 @@ export const deleteTeam = (teamId) => {
             await fetch(URL, {
                 method: 'DELETE',
             });
-            dispatch(deletetTeamSuccess(teamId));
+            console.log('success');
+            dispatch(deleteTeamSuccess(teamId));
         } catch(e) {
             console.error(e);
             dispatch(deleteTeamError(e.message));
@@ -115,7 +120,7 @@ export const deleteTeam = (teamId) => {
     }
 }
 
-const deletetTeamSuccess = () => ({ type: DELETE_TEAM_SUCCESS});
+const deleteTeamSuccess = (teamId) => ({ type: DELETE_TEAM_SUCCESS, teamId});
 const deleteTeamError = (message) => ({ type: DELETE_TEAM_ERROR, message});
 
 

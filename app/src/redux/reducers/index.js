@@ -9,8 +9,10 @@ import {combineReducers} from 'redux';
 
 
 import user from './authenticationReducer';
+import users from '../reducers/userReducer';
 import registration from './registerReducer';
 import teams from './teamReducer';
+import team from './singleTeamReducer';
 import events from './eventsReducer';
 
 
@@ -28,7 +30,9 @@ import events from './eventsReducer';
 
 const rootReducers = combineReducers({
     user,
+    users,
     teams,
+    team,
     registration,
     events,
 })

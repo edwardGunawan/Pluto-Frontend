@@ -22,13 +22,14 @@ export default function teamReducer(state=initialState.teams, action) {
                 team: action.team.map(t => t),
             }
         case UDPATE_TEAM_SUCCESS:
+            console.log(state);
             return {
                 message: 'success',
                 team: state.team.map(t => {
                     if(t.id === state.team.id) {
-                        return state.team;
+                        return t;
                     }
-                    return t;
+                    return state.team;
                 })
             }
         case CREATE_TEAM_SUCCESS:

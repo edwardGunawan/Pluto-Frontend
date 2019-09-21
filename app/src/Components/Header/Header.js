@@ -13,7 +13,10 @@ const Header = ({onLogout}) => {
                     <Nav.Link tag={NavLink} href="/home">Home</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link tag={NavLink} href="/register">Register</Nav.Link>
+                    <Nav.Link tag={NavLink} href="/users">Users</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link tag={NavLink} href="/teams">Teams</Nav.Link>
                 </Nav.Item>
                 {/* <Nav.Item>
                     <Nav.Link href="/assign-dates">Assign Dates to Team member</Nav.Link>
