@@ -89,9 +89,9 @@ const mapStateToProps = ({registration, user}, ownProps) => {
     
     const { username, role, isAuthenticated } = user;
     const {history} = ownProps;
-    if(message === 'success') history.push('/calenar');
+    if(message === 'success') history.push('/teams');
     return {
-        teams: role.Admin,
+        teams: ['freddiy', 'vincetn'],
         message,
         username,
     }

@@ -1,8 +1,5 @@
-import {ofType} from 'redux-observable';
-import {of} from 'rxjs';
-import { mergeMap, tap, map, catchError } from 'rxjs/operators';
-import {ajax} from 'rxjs/ajax';
 
+import {fetchTeamBasedOnUser} from './teamAction';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
@@ -18,9 +15,21 @@ function loginSuccess(usersObj) {
 }
 
 export function loginRequest(users) {
-    return {
-        type: LOGIN_REQUEST, 
-        cred: users
+    return async dispatch => {
+        try{
+            const response = await fetch(`http://localhost:8080/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: {
+                    users
+                }
+            });
+            dispatch(loginSuccess(response));
+        } catch (e) {
+            dispatch(loginFailure(e.message));
+        }
     }
 }
 
@@ -32,8 +41,15 @@ function loginFailure(message) {
 }
 
 export function logoutRequest() {
-    return {
-        type: LOGOUT_REQUEST
+    return async dispatch => {
+        try{
+            const url = `http://localhost:8080/logout`;
+            const response = await fetch(url,{ method:'POST'});
+            localStorage.removeItem('access_token');
+            dispatch(logoutSuccess(response));
+        } catch(e) {
+            dispatch(logoutFailure(e.message));
+        }
     }
 }
 
@@ -52,92 +68,22 @@ function logoutFailure(message) {
 }
 
 export function getUserInfoWithAccessToken(token) {
-    return {type: GET_USER_INFO_WITH_ACCESS_TOKEN, token}
-}
-
-export const getUserInfoEpic= (actions$) =>
-        actions$.pipe(
-            ofType(GET_USER_INFO_WITH_ACCESS_TOKEN),
-            mergeMap(({token}) => 
-            ajax({
-                    url: 'http://localhost:3001/users',
-                    method: 'GET',
-                    headers :{
-                        accessToken: `bearer-${token}`,
-                    }
-                }).pipe(
-                    tap((res) => console.log('response in refetching user', res)),
-                    map((res) => res.response),
-                    map((res) => loginSuccess(res)),
-                    catchError(e => {
-                        console.error(e);
-                        return of(loginFailure(e.message));
-                    })
-
-                )
-            ),
-            
-
-        )
-
-export function loginEpic(actions$) {
-    return actions$.pipe(
-        ofType(LOGIN_REQUEST),
-        tap(action => console.log('Logging login', action)),
-        mergeMap(({cred}) => {
-            return ajax({
-                url: `http://localhost:3001/login`,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: {
-                    cred
+    return async dispatch => {
+        try {
+            const url = `http://localhost:8080/api/v1/users/3`; // get 2 for now
+            const response = await fetch(url, {
+                method: 'GET',
+                header: {
+                    accessToken:`bearer-${token}`
                 }
-            }).pipe(
-                // it means that these all operation will be handle inside mergeMap
-                // it makes it cleaner because mergeMap will return a stream
-                // and this is what it does
-                tap((response) => console.log('response from login', response)),
-                map((res) => {
-                    console.log(res.response);
-                    const {response} = res;
-                    // store in sessionStorage for accessToken
-                    localStorage.setItem('access_token', response.accessToken);
-                    return loginSuccess(response)
-                }),
-                // Here we placed the catchError() inside our mergeMap(), 
-                // but after our AJAX call; this is important because if we 
-                // let the error reach the action$.pipe(), it will terminate it 
-                // and no longer listen for new actions.
-                catchError(e => {
-                    console.log(' Error occur', e);
-                    return of(loginFailure(e.message));
-                })
-            );
-        })
-    )
-}
-
-export function logoutEpic(actions$) {
-    return actions$.pipe(
-        ofType(LOGOUT_REQUEST),
-        tap(action => console.log('Logout', action)),
-        mergeMap(() => {
-            return ajax({
-                url: `http://localhost:3001/logout`,
-                method:'POST'
-            }).pipe(
-                tap((response) => console.log('response from logout')),
-                map(({response}) => {
-                    localStorage.removeItem('access_token');
-                    return logoutSuccess(response);
-                }),
-                catchError(e => {
-                    console.log('Error occur during logout... ', e);
-                    return of(logoutFailure(e.message));
-                })
-            );
-        }),
-    );
+            });
+            const specificUser = await response.json();
+            console.log('response in getInfoWithAccessToken ', specificUser);
+            // insert login success
+            dispatch(loginSuccess(specificUser));
+            return specificUser;
+        } catch(e) {
+            dispatch(loginFailure(e.message))
+        }
+    }
 }

@@ -4,11 +4,16 @@ import Login from '../Login';
 import Header from '../Header';
 import {connect} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
-import Register from '../Register';
+// import Register from '../Register';
+import User from '../User';
 import Home from '../Home';
+import TeamPage from '../Team/TeamPage';
+import ManageTeamPage from '../Team/ManageTeamPage';
 
 import { getUserInfoWithAccessToken } from '../../redux/actions/authenticationAction';
 import * as authenticationAction from '../../redux/actions/authenticationAction';
+import Register from '../Register/Register';
+
 
 
 class Main extends Component {
@@ -40,6 +45,11 @@ class Main extends Component {
               <Header onLogout={this.handleLogout}/>
               <Switch>
                 <Route path="/home" component={Home} />
+                <Route path="/users" component={User} />
+                {/* The more specific ones needs to go on top, and the more generic on the bottom */}
+                <Route path="/teams/:id" component={ManageTeamPage} /> {/** for update */}
+                <Route path="/teams" component={TeamPage} />
+                <Route path="/team" component={ManageTeamPage} /> {/**  for post */}
                 <Route path="/register" component={Register} />
                 {/* <Route path="/assign-dates" component={AssignDates}/> */}
               </Switch>
@@ -52,7 +62,7 @@ class Main extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.log('here in main', state.user);
     const { isAuthenticated, username } = state.user;
-    if(!isAuthenticated) ownProps.history.push('/login');
+    // if(!isAuthenticated) ownProps.history.push('/login');
     return {
       username,
     }

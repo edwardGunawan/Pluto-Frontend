@@ -1,0 +1,66 @@
+[
+    {
+        "id": 9,
+        "admins": [
+            {
+                "id": 1,
+                "name": "ed",
+                "username": "Freddy.Satterfield82",
+                "email": "Katlyn_Shields@yahoo.com"
+            }
+        ],
+        "users": [
+            {
+                "id": 7,
+                "name": "Jude92",
+                "username": "Jude92",
+                "email": "Merritt84@hotmail.com"
+            },
+            {
+                "id": 2,
+                "name": "Daisy42",
+                "username": "Daisy42",
+                "email": "Amir86@hotmail.com"
+            },
+            {
+                "id": 5,
+                "name": "Eunice_Hintz79",
+                "username": "Eunice_Hintz79",
+                "email": "Earl_Miller58@gmail.com"
+            }
+        ],
+        "name": "mercury"
+    },
+    {
+        "id": 10,
+        "admins": [
+            {
+                "id": 3,
+                "name": "Alexanne15",
+                "username": "Alexanne15",
+                "email": "Christy_Treutel42@gmail.com"
+            }
+        ],
+        "users": [
+            {
+                "id": 8,
+                "name": "Yasmin95",
+                "username": "Yasmin95",
+                "email": "Eldridge.Paucek@hotmail.com"
+            },
+            {
+                "id": 4,
+                "name": "Orville.Nikolaus",
+                "username": "Orville.Nikolaus",
+                "email": "FPedro51@yahoo.com"
+            },
+            {
+                "id": 6,
+                "name": "Nathen_Lind83",
+                "username": "Nathen_Lind83",
+                "email": "Ardith.Crist43@gmail.com"
+            }
+        ],
+        "name": "pluto"
+    }
+]

@@ -1,20 +1,31 @@
 export default {
     currentUser:{
-        role: 'Admin',
         email:'',
         username:'',
         isAuthenticated: localStorage.getItem('access_token') ? true : false,
         isFetching: false,
+        availableDates: [],
     },
-    // teams : { network: { color: 'rgba(1,2,3)', user:[user1, user2, user3]}
+    // teams : [{id: , admins:[], users:[], name: }]
     teams : { },
-    // either message failed or succeed
+    
+    // for updating courses
+    // team : {id: number, name: string, admin: Array<String>, users: Array<String>}
+    team: {},
+
+    // either message failed or succeed (on users)
     // register: {message: 'success', }
     register:{},
 
     // either message failed or succeed
     // events : {message: 'success', event: []}
     events: {},
+
+    // consist of all the users
+    // [id: number, name: string,username: string, email: string, availableDates: Array<String>]
+    users: []
+
+    
 
     
 }
